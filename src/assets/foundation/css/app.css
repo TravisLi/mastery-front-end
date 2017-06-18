@@ -1,0 +1,24 @@
+.msg-label {
+  padding: 0.33333rem 0.5rem;
+  border-radius: 0;
+  font-size: 0.8rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
+  background: #1779ba;
+  color: #fefefe; }
+  .msg-label.primary {
+    background: #1779ba;
+    color: #fefefe; }
+  .msg-label.secondary {
+    background: #767676;
+    color: #fefefe; }
+  .msg-label.success {
+    background: #3adb76;
+    color: #0a0a0a; }
+  .msg-label.warning {
+    background: #ffae00;
+    color: #0a0a0a; }
+  .msg-label.alert {
+    background: #cc4b37;
+    color: #fefefe; }

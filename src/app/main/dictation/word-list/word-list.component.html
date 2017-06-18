@@ -1,0 +1,61 @@
+<fieldset *ngIf="dictation" class="fieldset">
+  <legend>生字表</legend>
+  <div class="row">
+    <div class="medium-12 columns end">
+      <div class="input-group">
+        <input class="input-group-field" type="text" [(ngModel)]="word" name="word" #wo="ngModel" required>
+          <div class="input-group-button">
+            <button [disabled]="!wo.valid" class="button" (click)="add()">加入</button>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <table class="hover">
+        <thead>
+          <tr>
+            <th width="50"></th>
+            <th>生字</th>
+            <th align="center" width="80">刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let w of dictation.words; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{w}}</td>
+            <td align="center"><span (click)="delete(i)"><i class="fi-x" style="font-size:24px;"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="medium-10 columns">
+      <label for="dictName">儲存之名稱
+        <input type="text" id="dictName" value={{dictation.name}}>
+      </label>
+    </div>
+    <div class="medium-2 columns">
+      <label for="saveBtn">&nbsp;
+      <div class="expanded button-group">
+        <button class="button" id="saveBtn">儲存</button>
+      </div>
+    </label>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="medium-10 columns">
+      <label for="second">讀出間距(秒)
+        <input type="number" value='10' min=1 max=20 #second id="second">
+      </label>
+    </div>
+    <div class="medium-2 columns">
+      <label for="readBtn">&nbsp;
+      <div class="expanded button-group">
+        <button class="button" (click)="read(second.value)" id="readBtn">開始</button>
+      </div>
+    </label>
+    </div>
+  </div>
+</fieldset>

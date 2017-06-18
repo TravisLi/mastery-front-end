@@ -1,0 +1,17 @@
+<title-bar [title]="title"></title-bar>
+<div *ngFor="let news of newses" class="column row">
+  <div class="callout" style="border-radius:20px">
+    <div class="row">
+      <div class="small-6 medium-4 large-2 columns" align="center">
+        <div class="thumbnail">
+          <img src="{{news.img}}">
+        </div>
+      </div>
+      <div class="small-6 medium-8 large-10 columns">
+        <h5>{{news.title}} - {{news.date}}</h5>
+        <hr>
+        <p [innerHTML]="news.content"></p>
+      </div>
+    </div>
+  </div>
+</div>

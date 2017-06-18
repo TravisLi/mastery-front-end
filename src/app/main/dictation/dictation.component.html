@@ -1,0 +1,26 @@
+<title-bar></title-bar>
+<div class="column row">
+<div class="row collapse">
+  <div class="medium-9 columns">
+    <label for="list">已儲存之生字表
+      <select id="list" [(ngModel)]="selectedIdx">
+        <option *ngFor="let dictation of dictationList; let i=index"
+        value="{{i}}">
+        {{dictation.name}}
+      </option>
+    </select>
+  </label>
+</div>
+<div class="medium-3 columns">
+  <label for="btn">&nbsp;
+    <div class="expanded button-group" id="btn">
+      <button (click)="assign()" class="button" >存取</button>
+      <button (click)="createNew()" class="button" >新增</button>
+    </div>
+  </label>
+</div>
+</div>
+</div>
+<div class="column row">
+  <word-list [dictation]="assignDictation"></word-list>
+</div>

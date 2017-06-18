@@ -1,0 +1,12 @@
+<title-bar></title-bar>
+<div class="column row">
+  <div class="small-12 columns">
+  <div *ngFor="let lessonOfDay of timetable.lessonOfDays" class="row">
+    <h5>{{lessonOfDay.date}} - {{lessonOfDay.dayOfWeek}}</h5>
+      <div *ngFor="let lesson of lessonOfDay.lessons" class="medium-3 columns">
+        <lesson [lesson]="lesson"></lesson>
+      </div>
+    <hr>
+  </div>
+</div>
+</div>

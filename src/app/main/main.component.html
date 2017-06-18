@@ -1,0 +1,21 @@
+<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+  <!-- Close button -->
+  <button class="close-button" aria-label="Close menu" type="button" data-close #closeBtn>
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <!-- Menu -->
+  <ul class="vertical menu">
+    <li><a routerLink="./news" routerLinkActive="active">主頁</a></li>
+    <li><a routerLink="./timetable" routerLinkActive="active">時間表</a></li>
+    <li><a routerLink="./reward" routerLinkActive="active">奬勵印章</a></li>
+    <li><a routerLink="./dictation" routerLinkActive="active" (click)="closeBtn.click()">默書小幫手</a></li>
+    <li *ngIf="showAdminFunc()">
+      <a routerLink="./dictation" routerLinkActive="active" (click)="closeBtn.click()">默書小幫手</a>
+    </li>
+  </ul>
+</div>
+<div class="off-canvas-content" data-off-canvas-content>
+  <router-outlet></router-outlet>
+</div>
