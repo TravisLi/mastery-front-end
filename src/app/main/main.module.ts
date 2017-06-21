@@ -1,31 +1,44 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+//module
+import { AdminModule } from './admin/admin.module';
+
 //component
 import { MainComponent } from './main.component';
+import { DictationComponent } from './dictation/dictation.component';
 import { NewsComponent } from './news/news.component';
-import { DictationModule} from './dictation/dictation.module'
-import { RewardComponent } from './reward/reward.component';
 import { TimetableComponent } from './timetable/timetable.component';
-import { LessonComponent } from './timetable/lesson/lesson.component';
-//routing module
-import { MainRoutingModule } from './main-routing.module';
-import { TitleBarModule } from './title-bar/title-bar.module'
+import { TropyComponent } from './tropy/tropy.component';
+import { AuthGuard } from '../auth/auth-guard.service';
+import { AdminAuthGuard } from '../auth/admin-auth-guard.service';
+
+const mainRoutes: Routes = [
+  {
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canActivateChild: [AuthGuard],
+        children: [
+          {
+            path: 'admin',
+            loadChildren: './admin/admin.module#AdminModule'
+          },
+          { path: 'dictation', component: DictationComponent},
+          { path: 'news', component: NewsComponent },
+          { path: 'tropy', component: TropyComponent },
+          { path: 'timetable', component: TimetableComponent }
+        ]
+      }
+    ]
+  }];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MainRoutingModule,
-    DictationModule,
-    TitleBarModule
-  ],
-  declarations: [
-    MainComponent,
-    NewsComponent,
-    RewardComponent,
-    TimetableComponent,
-    LessonComponent,
-  ],
+  imports: [ RouterModule.forChild(mainRoutes) ],
+  exports: [ RouterModule ]
 })
-export class MainModule {}
+
+export class MainRoutingModule {}

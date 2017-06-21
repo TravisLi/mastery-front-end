@@ -1,0 +1,36 @@
+<div class="column row">
+  <h2>獎賞歷程</h2>
+</div>
+<div class="row column">
+<div class="table-scroll">
+  <table>
+    <tr>
+      <td *ngFor="let reward of rewardList; let i=index">
+        <div class="card" style="width:300px;">
+          <div class="card-section">
+            <div class="column row">
+              {{i+1}}.
+            </div>
+            <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
+              <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
+              {{reward.date}}
+            </div>
+            <div class="column row" style="background-color:#00ff00; color:white; padding-left:5px">
+              <i class="fi-home" style="font-size:22px;vertical-align:middle;"></i>
+              {{reward.reason}}
+            </div>
+            <div class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
+              <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
+              {{reward.teacher}}
+            </div>
+            <div class="column row" style="background-color:#ff00cc; color:white; padding-left:5px">
+              <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
+              {{reward.used}}
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>

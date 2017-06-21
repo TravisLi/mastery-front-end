@@ -1,10 +1,9 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-
-import 'jquery';
-import 'what-input';
-import 'foundation-sites';
+// import 'foundation-sites';
+// import 'jquery';
+// import 'what-input';
 
 @Component({
   selector: 'main',
@@ -30,7 +29,7 @@ export class MainComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    jQuery(document).foundation();
+    jQuery('#offCanvas').foundation();
   }
 
 }

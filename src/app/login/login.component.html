@@ -1,36 +1,36 @@
 <form #loginForm="ngForm">
     <br>
-    <div class="row">
-      <div class="small-8 medium-6 large-4 small-centered columns">
+    <div class="row align-center">
+      <div class="small-8 medium-6 large-4 columns">
          <figure>
            <img src="../assets/img/logo-mastery.png" alt="logo" />
          </figure>
       </div>
     </div>
     <br>
-    <div class="row">
-      <div class="small-8 medium-6 large-4 small-centered columns">
+    <div class="row align-center">
+      <div class="small-8 medium-6 large-4 columns">
         <span [hidden]="uname.valid || uname.pristine" class="msg-label alert">請輸入用戶名稱</span>
         <label>用戶名稱
           <input type="text" [(ngModel)]="username" id="username" name="username" #uname="ngModel" required>
         </label>
       </div>
     </div>
-    <div class="row">
-      <div class="small-8 medium-6 large-4 small-centered columns">
+    <div class="row align-center">
+      <div class="small-8 medium-6 large-4 columns">
         <span [hidden]="pwd.valid || pwd.pristine" class="msg-label alert">請輸入密碼</span>
         <label>密碼
           <input type="password" [(ngModel)]="password" id="password" name="password" #pwd="ngModel" required>
         </label>
       </div>
     </div>
-    <div class="row">
-      <div class="small-8 medium-6 large-4 small-centered columns">
+    <div class="row align-center">
+      <div class="small-8 medium-6 large-4 columns">
         <div *ngIf="message" class="callout primary">{{message}}</div>
       </div>
     </div>
-    <div class="row">
-      <div class="small-8 medium-6 large-4 small-centered columns">
+    <div class="row align-center">
+      <div class="small-8 medium-6 large-4 columns">
         <div class="expanded button-group">
           <button type="button" class="button" (click)="login()" [disabled]="!(uname.valid&&pwd.valid) || waiting">登入</button>
         </div>

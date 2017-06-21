@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { AuthService } from '../../auth/auth.service';
 import { NewsService } from './news.service';
@@ -12,7 +12,8 @@ import { News } from './news'
 
 export class NewsComponent implements OnInit {
 
-  title:string = "主頁";
+  @ViewChild(TitleBarComponent)
+  titleBar:TitleBarComponent;
   newses: News[] = News[0];
 
   constructor(private authService:AuthService, private newsService: NewsService){
@@ -20,6 +21,7 @@ export class NewsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.titleBar.title = "主頁";
     this.newsService.getNews()
     .then(newes=>{
       this.newses=newes;
