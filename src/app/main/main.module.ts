@@ -1,44 +1,42 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 //module
-import { AdminModule } from './admin/admin.module';
+import { TitleBarModule } from './title-bar/title-bar.module'
 
 //component
+import { DictationComponent} from './dictation/dictation.component';
+import { WordListComponent } from './dictation/word-list/word-list.component';
+import { LessonComponent } from './timetable/lesson/lesson.component';
 import { MainComponent } from './main.component';
-import { DictationComponent } from './dictation/dictation.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
-import { AuthGuard } from '../auth/auth-guard.service';
-import { AdminAuthGuard } from '../auth/admin-auth-guard.service';
+import { RewardComponent } from './tropy/reward/reward.component';
+import { RedeemComponent } from './tropy/redeem/redeem.component';
 
-const mainRoutes: Routes = [
-  {
-    path: '',
-    component: MainComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        canActivateChild: [AuthGuard],
-        children: [
-          {
-            path: 'admin',
-            loadChildren: './admin/admin.module#AdminModule'
-          },
-          { path: 'dictation', component: DictationComponent},
-          { path: 'news', component: NewsComponent },
-          { path: 'tropy', component: TropyComponent },
-          { path: 'timetable', component: TimetableComponent }
-        ]
-      }
-    ]
-  }];
+//routing module
+import { MainRoutingModule } from './main-routing.module';
+
 
 @NgModule({
-  imports: [ RouterModule.forChild(mainRoutes) ],
-  exports: [ RouterModule ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    MainRoutingModule,
+    TitleBarModule
+  ],
+  declarations: [
+    MainComponent,
+    NewsComponent,
+    DictationComponent,
+    WordListComponent,
+    LessonComponent,
+    TimetableComponent,
+    TropyComponent,
+    RewardComponent,
+    RedeemComponent
+  ],
 })
-
-export class MainRoutingModule {}
+export class MainModule {}

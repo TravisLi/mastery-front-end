@@ -1,0 +1,37 @@
+<div class="reveal" id="rewardReveal" data-reveal>
+  <form #rewardForm="ngForm">
+		<h4>頒發獎章</h4>
+		<div class="row column">
+			<p>獲發學生: {{student.username}}
+			</p>
+		</div>
+		<div class="row column">
+			<p>頒發老師/員工: {{rewarder.username}}
+			</p>
+		</div>
+		<div class="row column">
+			<label>頒發原因
+        <span style="margin-left:0.5rem;" [hidden]="rea.valid || rea.pristine" class="msg-label alert">請輸入頒發原因</span>
+				<input type="text" [(ngModel)]="reason" id="rea" name="rea" #rea="ngModel" required>
+			</label>
+		</div>
+		<div class="row column">
+      <div class="input-group">
+        <select [(ngModel)]="selectedReason" name="selectedResaon">
+          <option *ngFor="let r of rewardReasons" [value]="r">{{r}}</option>
+        </select>
+        <div class="input-group-button">
+          <button class="button" (click)="onClick()" [disabled]="!selectedReason">選擇{{r}}</button>
+        </div>
+      </div>
+		</div>
+		<div class="row column">
+			<div class="expanded button-group">
+				<button (click)="confirm()" class="button" id="create" [disabled]="!rewardForm.valid">確定</button>
+			</div>
+		</div>
+	</form>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

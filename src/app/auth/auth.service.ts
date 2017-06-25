@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { User } from '../model/User';
+import { User } from '../user/user';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
@@ -22,7 +22,7 @@ export class AuthService {
       this.user = new User();
       this.user.id = 1;
       this.user.username = "Angular";
-      this.user.role = 'teacher';
+      this.user.role = 'admin';
       this.isLoggedIn = true;
       if(this.redirectUrl){
         this.router.navigate([this.redirectUrl]);

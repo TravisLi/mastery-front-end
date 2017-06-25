@@ -2,8 +2,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let users = [
-      {id:1, username: 'test', pwd: 'test', role:'admin'},
-      {id:2, username: 'test1', pwd: 'test1', role: 'student'}
+      {id:1, username: 'test', pwd: 'test', role:'admin', stid:'12345'},
+      {id:2, username: 'test1', pwd: 'test1', role: 'student', stid:'45678'}
     ];
 
     let newses = [
@@ -161,6 +161,8 @@ export class InMemoryDataService implements InMemoryDbService {
       redeemList: redeemList
     }
 
-    return {users, newses, timetables, dictationLists, tropy};
+    let rewardReasons = ['a','b','c','d','e']
+
+    return {users, newses, timetables, dictationLists, tropy, rewardReasons};
   }
 }

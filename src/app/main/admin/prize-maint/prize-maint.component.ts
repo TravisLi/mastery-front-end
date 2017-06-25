@@ -5,11 +5,11 @@ import { User } from '../../../user/user';
 import { UserService } from '../../../user/user.service';
 
 @Component({
-  selector: 'user-maint',
-  templateUrl: './user-maint.component.html',
-  styleUrls:['./user-maint.component.css']
+  selector: 'prize-maint',
+  templateUrl: './prize-maint.component.html',
+  styleUrls:['./prize-maint.component.css']
 })
-export class UserMaintComponent {
+export class PrizeMaintComponent {
 
   private logger:Logger = Logger.getLogger(this.constructor.name);
 

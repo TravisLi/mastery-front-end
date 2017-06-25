@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 //component
 import { AdminComponent } from './admin.component';
 import { UserMaintComponent } from './user-maint/user-maint.component';
+import { PrizeMaintComponent } from './prize-maint/prize-maint.component';
 import { AuthGuard } from '../../auth/auth-guard.service';
 import { AdminAuthGuard } from '../../auth/admin-auth-guard.service';
 
@@ -17,7 +18,8 @@ const adminRoutes: Routes = [
         path: '',
         canActivateChild: [AdminAuthGuard],
         children: [
-          { path: 'user-maint', component: UserMaintComponent},
+          { path: 'user-maint', component: UserMaintComponent },
+          { path: 'prize-maint', component: PrizeMaintComponent }
         ]
       }
     ]

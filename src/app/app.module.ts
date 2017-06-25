@@ -12,10 +12,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { UserService } from './user/user.service';
+
+import { AuthGuard } from './auth/auth-guard.service';
 import { AdminAuthGuard } from './auth/admin-auth-guard.service';
 import { TeacherAuthGuard } from './auth/teacher-auth-guard.service';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 
 @NgModule({
   imports: [
@@ -31,7 +34,14 @@ import { TeacherAuthGuard } from './auth/teacher-auth-guard.service';
     LoginComponent,
     PageNotFoundComponent
   ],
-  providers: [AuthGuard, AuthService, AdminAuthGuard, TeacherAuthGuard],
+  providers: [
+    AuthGuard,
+    AdminAuthGuard,
+    TeacherAuthGuard,
+    AuthService,
+    UserService,
+    CanDeactivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

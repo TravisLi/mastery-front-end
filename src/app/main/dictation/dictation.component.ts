@@ -4,6 +4,9 @@ import { WordListComponent } from './word-list/word-list.component';
 import { AuthService } from '../../auth/auth.service';
 import { DictationService } from './dictation.service';
 import { Dictation } from './dictation';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'jquery';
 
 @Component({
   selector: 'dictation',
@@ -45,6 +48,19 @@ export class DictationComponent implements OnInit{
   createNew():void{
     console.log("creaetNew");
     this.assignDictation = new Dictation();
+  }
+
+  canDeactivate():boolean{
+    console.log('canDeactivate');
+    //this.titleBar.openConfirmationBox('Quit without save?');
+
+    //let btn = document.querySelector('#con');
+    //console.log(btn);
+    //let cs = Observable.fromEvent(btn,'click');
+    //cs.subscribe(()=>{console.log('click')});
+
+    return window.confirm('Leave?');
+
   }
 
 }
