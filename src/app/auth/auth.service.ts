@@ -22,24 +22,26 @@ export class AuthService {
     console.error('An error occurred', error); // for demo purposes only
   }
 
-  login(): Observable<boolean> {
-    return Observable.of(false).delay(1000).do(
-      (val) => {
-        console.log('value='+val);
-        this.isLoggedIn = true
-      });
-  }
-
-  // login(username:string,pwd:string): Promise<boolean> {
-  //   this.userService.getUserByUsername(username).then(
-  //     user => {
-  //       if(pwd===user.pwd){
-  //
-  //       }
-  //     }
-  //   )
-  //   return userServivce
+  // login(): Observable<boolean> {
+  //   return Observable.of(false).delay(1000).do(
+  //     (val) => {
+  //       console.log('value='+val);
+  //       this.isLoggedIn = true
+  //     });
   // }
+
+  login(username:string,pwd:string): Promise<Boolean> {
+    return this.userService.getUserByUsername(username)
+    .then(user => {
+      if(user.pwd===pwd){
+        this.user = user;
+        this.isLoggedIn = true;
+        return Promise.resolve(true);
+      }else{
+        return Promise.resolve(false);
+      }
+    })
+  }
 
   // login(): Observable<boolean> {
   //   return Observable.of(true).delay(1000).do(val => {

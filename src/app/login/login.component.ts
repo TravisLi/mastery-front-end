@@ -29,16 +29,28 @@ export class LoginComponent {
   login() {
     this.message = '登入中...';
     this.waiting = true;
-    this.authService.login().subscribe(() => {
-      this.waiting = false;
-      if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
-        // Redirect the user
-        this.router.navigate([redirect]);
+    this.authService.login(this.username, this.password).then(
+      value => {
+        this.waiting = false;
+        if(value){
+          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
+          console.log(redirect);
+          this.router.navigate([redirect]);
+        }else{
+          this.message = 'error';
+        }
       }
-    });
+    )
+    // this.authService.login().subscribe(() => {
+    //   this.waiting = false;
+    //   if (this.authService.isLoggedIn) {
+    //     // Get the redirect URL from our auth service
+    //     // If no redirect has been set, use the default
+    //     let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
+    //     // Redirect the user
+    //     this.router.navigate([redirect]);
+    //   }
+    // });
   }
 
 
