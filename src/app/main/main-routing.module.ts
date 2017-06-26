@@ -10,10 +10,15 @@ import { DictationComponent } from './dictation/dictation.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
-import { AuthGuard } from '../auth/auth-guard.service';
-import { CanDeactivateGuard } from '../can-deactivate-guard.service';
-import { AdminAuthGuard } from '../auth/admin-auth-guard.service';
+
+
 import { RedeemComponent} from './redeem/redeem.component';
+import { RewardComponent } from './reward/reward.component';
+
+import { AuthGuard } from '../auth/auth-guard.service';
+import { AdminAuthGuard } from '../auth/admin-auth-guard.service';
+import { TeacherAuthGuard } from '../auth/teacher-auth-guard.service';
+import { CanDeactivateGuard } from '../can-deactivate-guard.service';
 
 const mainRoutes: Routes = [
   {
@@ -34,6 +39,9 @@ const mainRoutes: Routes = [
           { path: 'tropy', component: TropyComponent },
           { path: 'timetable', component: TimetableComponent },
           { path: 'redeem', component: RedeemComponent },
+          { path: 'reward',
+            component: RewardComponent,
+            canActivate: [AdminAuthGuard, TeacherAuthGuard]},
         ]
       }
     ]

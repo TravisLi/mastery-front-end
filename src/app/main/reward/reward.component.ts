@@ -12,6 +12,7 @@ export class RewardComponent {
   @Input()student:User = new User();
   @Input()reason:string;
   @Input()selectedReason:string;
+  students:User[];
   rewarder:User = new User();
   rewardReasons:string[];
 

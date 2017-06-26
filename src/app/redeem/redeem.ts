@@ -2,8 +2,10 @@ import { Prize } from '../prize/prize';
 import { User } from '../user/user';
 
 export class Redeem {
-  id: number;
-  date:Date;
+  id:number;
+  redeemDate:Date;
   prize:Prize;
-  redeemBy:User;
+  redeemedBy:User;
+  confirmedBy:User;
+  photoUrl:string;
 }
