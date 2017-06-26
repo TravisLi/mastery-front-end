@@ -41,6 +41,9 @@ export class AuthService {
         return Promise.resolve(false);
       }
     })
+    .catch((error)=>
+      Promise.reject(error)
+    )
   }
 
   // login(): Observable<boolean> {

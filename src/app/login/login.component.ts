@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MsgBoxComponent } from '../msg-box/msg-box.component';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { Logger } from '../logger/logger';
 
 @Component({
   selector: 'login',
@@ -10,36 +12,46 @@ import { NgModule } from '@angular/core';
 })
 export class LoginComponent {
 
+  private logger:Logger = Logger.getLogger(this.constructor.name);
+
+  @ViewChild(MsgBoxComponent)
+  msgBox:MsgBoxComponent;
+
   message: string;
   waiting: boolean;
   @Input()username: string;
   @Input()password: string;
 
   constructor(public authService: AuthService, public router: Router) {
-    this.clearMessage();
     this.waiting = false;
-    this.username = null;
-    this.password = null;
+    this.username = '';
+    this.password = '';
   }
 
-  clearMessage() {
-    this.message = null;
+  ngOnInit(){
+    this.msgBox.clearMsg();
   }
 
   login() {
-    this.message = '登入中...';
+    this.msgBox.sendPriMsg('登入中...');
     this.waiting = true;
-    this.authService.login(this.username, this.password).then(
-      value => {
+    this.authService.login(this.username, this.password)
+    .then((value) => {
         this.waiting = false;
         if(value){
           let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
-          console.log(redirect);
+          this.logger.debug(redirect);
           this.router.navigate([redirect]);
         }else{
-          this.message = 'error';
+          this.msgBox.sendWarningMsg('密碼錯誤');
         }
       }
+    )
+    .catch((reject)=>{
+      this.logger.error(reject);
+      this.msgBox.sendAlterMsg('無此用戶');
+    }
+
     )
     // this.authService.login().subscribe(() => {
     //   this.waiting = false;

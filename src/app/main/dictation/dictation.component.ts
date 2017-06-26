@@ -28,14 +28,14 @@ export class DictationComponent implements OnInit{
 
   ngOnInit(): void {
     this.titleBar.title = "默書小幫手";
-    this.titleBar.sendPriMsg('存取中...');
+    this.titleBar.msgBox.sendPriMsg('存取中...');
     this.dictationService.getDictationListSlowly()
     .then(dictationList=>{
       this.dictationList=dictationList;
       if(this.dictationList.length>0){
         this.selectedIdx = 0;
       }
-      this.titleBar.clearMsg();
+      this.titleBar.msgBox.clearMsg();
     });
   }
 

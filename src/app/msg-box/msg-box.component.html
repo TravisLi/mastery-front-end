@@ -1,0 +1,8 @@
+<div *ngIf="sysMsg" class="callout"
+[class.primary]="sysMsg?.type === SysMsgType.Primary"
+[class.secondary]="sysMsg?.type === SysMsgType.Secondary"
+[class.success]="sysMsg?.type === SysMsgType.Success"
+[class.warning]="sysMsg?.type === SysMsgType.Warning"
+[class.alert]="sysMsg?.type === SysMsgType.Alert">
+<p>{{sysMsg.msg}}</p>
+</div>

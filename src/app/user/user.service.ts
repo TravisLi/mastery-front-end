@@ -39,6 +39,7 @@ export class UserService {
       if(users.length>0){
         return Promise.resolve(users[0]);
       }
+      return Promise.reject('cannot find user ' + username);
     });
   }
 }

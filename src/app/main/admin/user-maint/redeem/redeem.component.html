@@ -1,11 +1,8 @@
 <div class="reveal" id="newReveal" data-reveal>
   <form #updateForm="ngForm" name="newForm">
-		<h4>新增用戶</h4>
-		<div class="row column">
-			<label>用戶名稱
-        <span style="margin-left:0.5rem;" [hidden]="uname.valid || uname.pristine" class="msg-label alert">請輸入用戶名稱</span>
-				<input type="text" [(ngModel)]="user.username" #uname="ngModel" name="username" required>
-			</label>
+		<h4>獎品換領</h4>
+    <div class="row column">
+			<p>換領學生: {{student.username}}</p>
 		</div>
 		<div class="row column">
 			<label>密碼

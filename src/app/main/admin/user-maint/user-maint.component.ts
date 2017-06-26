@@ -23,11 +23,11 @@ export class UserMaintComponent {
 
   ngOnInit(){
     this.titleBar.title = "用戶管理";
-    this.titleBar.sendLoadingMsg();
+    this.titleBar.msgBox.sendLoadingMsg();
     this.userService.getUsersSlowly()
     .then(users=>{
       this.users=users;
-      this.titleBar.clearMsg();
+      this.titleBar.msgBox.clearMsg();
     });
   }
 

@@ -22,11 +22,11 @@ export class TropyComponent implements OnInit{
 
   ngOnInit(): void {
     this.titleBar.title = "奬勵印章";
-    this.titleBar.sendPriMsg('loading');
+    this.titleBar.msgBox.sendPriMsg('loading');
     this.tropyService.getTropySlowly()
     .then(tropy=>{
       this.tropy=tropy;
-      this.titleBar.clearMsg();
+      this.titleBar.msgBox.clearMsg();
     });
   }
 

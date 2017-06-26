@@ -19,17 +19,5 @@
     </span>
   </div>
 </div>
-<div *ngIf="sysMsg" class="callout"
-[class.primary]="sysMsg?.type === SysMsgType.Primary"
-[class.secondary]="sysMsg?.type === SysMsgType.Secondary"
-[class.success]="sysMsg?.type === SysMsgType.Success"
-[class.warning]="sysMsg?.type === SysMsgType.Warning"
-[class.alert]="sysMsg?.type === SysMsgType.Alert">
-<p>{{sysMsg.msg}}</p>
-</div>
-<div *ngIf="confirmMsg" class="callout" style="display:inline-block">
-  <p>{{confirmMsg}}</p>
-  <button class="button" (click)="confirmClick()" id="con">Yes</button>
-  <button class="button" (click)="cancelClick()">Cancel</button>
-</div>
+<msg-box></msg-box>
 <br>
