@@ -7,7 +7,6 @@ import { UserService } from '../../../user/user.service';
 @Component({
   selector: 'prize-maint',
   templateUrl: './prize-maint.component.html',
-  styleUrls:['./prize-maint.component.css']
 })
 export class PrizeMaintComponent {
 

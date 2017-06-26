@@ -1,5 +1,5 @@
-import { Reward } from './reward';
-import { Redeem } from './redeem';
+import { Reward } from '../../reward/reward';
+import { Redeem } from '../../redeem/redeem';
 
 export class Tropy{
   rewardNo:number;

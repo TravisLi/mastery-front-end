@@ -13,9 +13,10 @@ import { MainComponent } from './main.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
-import { RewardComponent } from './tropy/reward/reward.component';
-import { RedeemComponent } from './tropy/redeem/redeem.component';
-
+import { RewardListComponent } from './tropy/reward-list/reward-list.component';
+import { RedeemListComponent } from './tropy/redeem-list/redeem-list.component';
+import { RewardComponent } from './reward/reward.component';
+import { RedeemComponent } from './redeem/redeem.component';
 //routing module
 import { MainRoutingModule } from './main-routing.module';
 
@@ -35,6 +36,8 @@ import { MainRoutingModule } from './main-routing.module';
     LessonComponent,
     TimetableComponent,
     TropyComponent,
+    RewardListComponent,
+    RedeemListComponent,
     RewardComponent,
     RedeemComponent
   ],

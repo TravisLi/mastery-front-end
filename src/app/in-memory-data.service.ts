@@ -1,9 +1,24 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
+
+    let roles = [
+      {id:1, type:'admin'},
+      {id:2, type:'teacher'},
+      {id:3, type:'student'}
+    ]
+
     let users = [
-      {id:1, username: 'test', pwd: 'test', role:'admin', stid:'12345'},
-      {id:2, username: 'test1', pwd: 'test1', role: 'student', stid:'45678'}
+      {id:1, username: 'admin', name:'管理員', pwd: 'admin', role:roles[0], stid:'1'},
+      {id:2, username: 't1', name:'老師1', pwd: 't1', role: roles[1], stid:'2'},
+      {id:3, username: 't2', name:'老師2', pwd: 't2', role: roles[1], stid:'3'},
+      {id:4, username: 's1', name:'學生1', pwd: 's1', role: roles[2], stid:'4'},
+      {id:5, username: 's2', name:'學生2', pwd: 's2', role: roles[2], stid:'5'},
+      {id:6, username: 's3', name:'學生3', pwd: 's3', role: roles[2], stid:'6'},
+      {id:7, username: 's4', name:'學生4', pwd: 's4', role: roles[2], stid:'7'},
+      {id:8, username: 's5', name:'學生5', pwd: 's5', role: roles[2], stid:'8'},
+      {id:9, username: 's6', name:'學生6', pwd: 's6', role: roles[2], stid:'9'},
+      {id:10, username: 's7', name:'學生7', pwd: 's7', role: roles[2], stid:'10'}
     ];
 
     let newses = [
@@ -90,7 +105,7 @@ export class InMemoryDataService implements InMemoryDbService {
       lessonOfDays: lessonOfDays,
     }]
 
-    let dictationLists = [
+    let dictations = [
       {
         id:1,
         name: 'list1',
@@ -108,61 +123,107 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ]
 
-    let rewardList = [
+    let rewards = [
       {
-        date:'16-06-2017',
+        id:1,
+        rewardDate:'16-06-2017',
         reason:'reason',
-        teacher:'teacher',
-        used: 'yes'
+        student:users[3],
+        awardedBy:users[1],
+        tropyEarned: 10
       },
       {
-        date:'16-06-2017',
+        id:2,
+        rewardDate:'16-06-2017',
         reason:'reason',
-        teacher:'teacher',
-        used: 'yes'
+        student:users[3],
+        awardedBy:users[1],
+        tropyEarned: 10
       },
       {
-        date:'16-06-2017',
+        id:3,
+        rewardDate:'16-06-2017',
         reason:'reason',
-        teacher:'teacher',
-        used: 'yes'
+        student:users[3],
+        awardedBy:users[1],
+        tropyEarned: 10
+      },
+    ]
+
+    let prizes = [
+      {
+        id:1,
+        desc:'獎品1',
+        photoUrl:'./assets/prize-img/prize1.jpg',
+        tropyRequired:10,
       },
       {
-        date:'16-06-2017',
-        reason:'reason',
-        teacher:'teacher',
-        used: 'yes'
+        id:2,
+        desc:'獎品2',
+        photoUrl:'./assets/prize-img/prize1.jpg',
+        tropyRequired:10,
       },
       {
-        date:'16-06-2017',
-        reason:'reason',
-        teacher:'teacher',
-        used: 'yes'
+        id:3,
+        desc:'獎品3',
+        photoUrl:'./assets/prize-img/prize1.jpg',
+        tropyRequired:10,
+      },
+      {
+        id:4,
+        desc:'獎品4',
+        photoUrl:'./assets/prize-img/prize1.jpg',
+        tropyRequired:10,
+      },
+      {
+        id:5,
+        desc:'獎品5',
+        photoUrl:'./assets/prize-img/prize1.jpg',
+        tropyRequired:10,
       }
     ]
 
-    let redeemList = [
+    let redeems = [
       {
-        date:'16-06-2017',
-        prize: 'sada',
-        tropyUsed: '50',
+        id:1,
+        redeemDate:'16-06-2017',
+        prize: prizes[1],
+        redeemedBy:users[2],
+        confirmedBy:users[0],
+        photoUrl:'./assets/redeem-img/redeem1.jpg'
       },
       {
-        date:'16-06-2017',
-        prize: 'asdsa',
-        tropyUsed: '50',
-      }
+        id:2,
+        redeemDate:'16-06-2017',
+        prize: prizes[1],
+        redeemedBy:users[2],
+        confirmedBy:users[0],
+        photoUrl:'./assets/redeem-img/redeem1.jpg'
+      },
+      {
+        id:3,
+        redeemDate:'16-06-2017',
+        prize: prizes[1],
+        redeemedBy:users[2],
+        confirmedBy:users[0],
+        photoUrl:'./assets/redeem-img/redeem1.jpg'
+      },
     ]
 
     let tropy = {
       rewardNo:4,
       redeemNo:2,
-      rewardList: rewardList,
-      redeemList: redeemList
+      rewards: rewards,
+      redeems: redeems
     }
 
-    let rewardReasons = ['a','b','c','d','e']
+    let rewardReasons = [
+      'reason1',
+      'reason2',
+      'reason3',
+      'reason4',
+      'reason5']
 
-    return {users, newses, timetables, dictationLists, tropy, rewardReasons};
+    return {roles, users, newses, timetables, dictations, tropy, rewardReasons};
   }
 }

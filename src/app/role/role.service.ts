@@ -1,13 +1,13 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { User } from './user';
+import { Role } from './role';
 
 @Injectable()
-export class UserService {
+export class RoleService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private url = 'api/users';
+  private url = 'api/roles';
 
   constructor(private http:Http){}
 
@@ -16,29 +16,18 @@ export class UserService {
     return Promise.reject(error.message || error);
   }
 
-  getUsers(): Promise<User[]> {
+  getRoles(): Promise<Role[]> {
     return this.http.get(this.url)
     .toPromise()
-    .then(response => response.json().data as User[])
+    .then(response => response.json().data as Role[])
     .catch(this.handleError);
   }
 
-  getUsersSlowly(): Promise<User[]> {
+  getRolesSlowly(): Promise<Role[]> {
     return new Promise(resolve => {
       // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getUsers()), 2000);
+      setTimeout(() => resolve(this.getRoles()), 2000);
     });
   }
 
-  getUserByUsername(username:string): Promise<User>{
-    const url = `${this.url}?username=${username}`;
-    return this.http.get(url)
-    .toPromise()
-    .then(response => {
-      let users = response.json().data as User[];
-      if(users.length>0){
-        return Promise.resolve(users[0]);
-      }
-    });
-  }
 }
