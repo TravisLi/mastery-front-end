@@ -2,7 +2,7 @@
 <div class="row">
     <div class="small-12 medium-6 large-4 columns end">
       <div class="input-group">
-        <input #search-box class="input-group-field" type="text" placeholder="用戶名稱" (keyup)="search(search-box.value)">
+        <input #searchBox class="input-group-field" type="text" placeholder="用戶名稱" (keyup)="search(searchBox.value)">
         <div class="input-group-button">
           <button class="button">搜尋</button>
         </div>
@@ -16,7 +16,7 @@
           <th>ID</th>
           <th>用戶名稱</th>
         </tr>
-        <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | asyn" (click)="onClickStudent(student)">
+        <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | async" (click)="onClickStudent(student)">
           <td>{{student.id}}</td>
           <td>{{student.name}}</td>
         </tr>
