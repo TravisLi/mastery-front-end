@@ -26,7 +26,7 @@ export class TeacherAuthGuard extends AuthGuard {
   checkIsTeacher(url: string): boolean {
 
     if(super.checkLogin(url)){
-      if(this.authService.user.role == 'teacher'|| this.authService.user.role == 'admin'){
+      if(this.authService.user.role.type == 'teacher'|| this.authService.user.role.type == 'admin'){
         return true;
       }
     }

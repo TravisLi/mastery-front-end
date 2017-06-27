@@ -1,11 +1,15 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { Logger } from '../logger/logger';
+import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 import { User } from './user';
 
 @Injectable()
 export class UserService {
 
+  private logger = Logger.getLogger(this.constructor.name);
   private headers = new Headers({'Content-Type': 'application/json'});
   private url = 'api/users';
 
@@ -30,16 +34,31 @@ export class UserService {
     });
   }
 
+  getStudentsByName(name:string):Observable<User[]> {
+    const url = `${this.url}?name=${name}`;
+    return this.http.get(url)
+    .map(response=>{
+      let users = response.json().data as User[];
+      let students = users.filter((user)=>{
+        return user.role.type=='student'
+      })
+      console.log(students);
+      return students;
+    })
+  }
+
   getUserByUsername(username:string): Promise<User>{
+    this.getStudentsByName(username);
     const url = `${this.url}?username=${username}`;
     return this.http.get(url)
     .toPromise()
     .then(response => {
       let users = response.json().data as User[];
       if(users.length>0){
-        return Promise.resolve(users[0]);
+          return users[0];
+      }else{
+        throw new Error('no such user');
       }
-      return Promise.reject('cannot find user ' + username);
-    });
+    })
   }
 }

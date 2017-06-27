@@ -1,12 +1,36 @@
-<div class="reveal" id="rewardReveal" data-reveal>
+<title-bar></title-bar>
+<div class="row">
+    <div class="small-12 medium-6 large-4 columns end">
+      <div class="input-group">
+        <input #search-box class="input-group-field" type="text" placeholder="用戶名稱" (keyup)="search(search-box.value)">
+        <div class="input-group-button">
+          <button class="button">搜尋</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="column row">
+  <div class="table-scroll" style="overflow-y:auto;max-height:300px;">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>用戶名稱</th>
+        </tr>
+        <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | asyn" (click)="onClickStudent(student)">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+        </tr>
+      </table>
+  </div>
+</div>
+<div>
   <form #rewardForm="ngForm">
-		<h4>頒發獎章</h4>
 		<div class="row column">
-			<p>獲發學生: {{student.username}}
+			<p>獲發學生: {{selectedStudent.name}}
 			</p>
 		</div>
 		<div class="row column">
-			<p>頒發老師/員工: {{rewarder.username}}
+			<p>頒發老師/員工: {{rewarder.name}}
 			</p>
 		</div>
 		<div class="row column">
@@ -31,7 +55,4 @@
 			</div>
 		</div>
 	</form>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
 </div>

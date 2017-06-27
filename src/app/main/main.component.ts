@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   }
 
   showAdminFunc(){
-    if(this.authService.user.role=='admin'){
+    if(this.authService.user.role.type=='admin'){
       return true;
     }
     return false;

@@ -41,7 +41,7 @@ const mainRoutes: Routes = [
           { path: 'redeem', component: RedeemComponent },
           { path: 'reward',
             component: RewardComponent,
-            canActivate: [AdminAuthGuard, TeacherAuthGuard]},
+            canActivate: [TeacherAuthGuard]},
         ]
       }
     ]

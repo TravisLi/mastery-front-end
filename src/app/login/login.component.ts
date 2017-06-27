@@ -36,7 +36,8 @@ export class LoginComponent {
     this.msgBox.sendPriMsg('登入中...');
     this.waiting = true;
     this.authService.login(this.username, this.password)
-    .then((value) => {
+    .then(
+      (value) => {
         this.waiting = false;
         if(value){
           let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
@@ -48,6 +49,7 @@ export class LoginComponent {
       }
     )
     .catch((reject)=>{
+      this.waiting = false;
       this.logger.error(reject);
       this.msgBox.sendAlterMsg('無此用戶');
     }

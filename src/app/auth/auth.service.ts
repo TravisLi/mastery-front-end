@@ -36,14 +36,11 @@ export class AuthService {
       if(user.pwd===pwd){
         this.user = user;
         this.isLoggedIn = true;
-        return Promise.resolve(true);
+        return true;
       }else{
-        return Promise.resolve(false);
+        return false;
       }
     })
-    .catch((error)=>
-      Promise.reject(error)
-    )
   }
 
   // login(): Observable<boolean> {
