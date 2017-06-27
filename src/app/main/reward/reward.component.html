@@ -1,10 +1,10 @@
 <title-bar></title-bar>
 <div class="row">
-    <div class="small-12 medium-6 large-4 columns end">
+    <div class="small-12 medium-8 large-6 columns end">
       <div class="input-group">
-        <input #searchBox class="input-group-field" type="text" placeholder="用戶名稱" (keyup)="search(searchBox.value)">
+        <input #searchBox class="input-group-field" id="searchBox" type="text" placeholder="學生名稱搜尋" (keyup)="search(searchBox.value)">
         <div class="input-group-button">
-          <button class="button">搜尋</button>
+          <button class="button">搜尋全部</button>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
       <table>
         <tr>
           <th>ID</th>
-          <th>用戶名稱</th>
+          <th>學生名稱</th>
         </tr>
         <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | async" (click)="onClickStudent(student)">
           <td>{{student.id}}</td>
@@ -23,35 +23,42 @@
       </table>
   </div>
 </div>
-<div>
-  <form #rewardForm="ngForm">
-		<div class="row column">
-			<p>獲發學生: {{selectedStudent.name}}
-			</p>
+<div *ngIf="selectedStudent.id" class="row column">
+  <hr>
+  <form #rewardForm="ngForm" (ngSubmit)="confirm()">
+		<div class="row">
+      <div class="small-12 medium-6 large-4 columns">
+        <!-- <label>獲發學生: {{selectedStudent.name}}</label> -->
+        <label>獲發學生
+     			<input type="text" [value]="selectedStudent.name" readonly required>
+     		</label>
+      </div>
+      <div class="small-12 medium-6 large-8 columns">
+        <label>頒發老師/員工
+     			<input type="text" [value]="authService.user.name" readonly required>
+     		</label>
+			     <!-- <label>頒發老師/員工: {{rewarder.name}}</label> -->
+      </div>
 		</div>
-		<div class="row column">
-			<p>頒發老師/員工: {{rewarder.name}}
-			</p>
-		</div>
-		<div class="row column">
-			<label>頒發原因
-        <span style="margin-left:0.5rem;" [hidden]="rea.valid || rea.pristine" class="msg-label alert">請輸入頒發原因</span>
-				<input type="text" [(ngModel)]="reason" id="rea" name="rea" #rea="ngModel" required>
-			</label>
-		</div>
-		<div class="row column">
-      <div class="input-group">
-        <select [(ngModel)]="selectedReason" name="selectedResaon">
-          <option *ngFor="let r of rewardReasons" [value]="r">{{r}}</option>
-        </select>
-        <div class="input-group-button">
-          <button class="button" (click)="onClick()" [disabled]="!selectedReason">選擇{{r}}</button>
-        </div>
+		<div class="row">
+      <div class="small-12 medium-6 large-4 columns">
+        <!-- <label>獲發學生: {{selectedStudent.name}}</label> -->
+        <label>獎盃數目
+          <input type="text" [value]="selectedReason.tropyWorth" readonly required>
+     		</label>
+      </div>
+      <div class="small-12 medium-6 large-8 columns">
+        <label>頒發原因
+          <!-- <span style="margin-left:0.5rem;" [hidden]="reason.valid || reason.pristine" class="msg-label alert">請輸入頒發原因</span> -->
+          <select name="selectedResaon" #reason (change)="onSelectReason(reason.value)" required>
+            <option *ngFor="let reason of rewardReasons" [value]="reason.id">{{reason.desc}}</option>
+          </select>
+        </label>
       </div>
 		</div>
 		<div class="row column">
 			<div class="expanded button-group">
-				<button (click)="confirm()" class="button" id="create" [disabled]="!rewardForm.valid">確定</button>
+				<button type="submit" class="button" [disabled]="!rewardForm.valid">確定</button>
 			</div>
 		</div>
 	</form>

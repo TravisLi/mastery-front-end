@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { RoleType } from '../role/role';
 // import 'foundation-sites';
 // import 'jquery';
 // import 'what-input';
@@ -21,11 +22,12 @@ export class MainComponent implements OnInit {
     //this.router.navigate(['news'],{ relativeTo: this.route });
   }
 
-  showAdminFunc(){
-    if(this.authService.user.role.type=='admin'){
-      return true;
-    }
-    return false;
+  showAdminFunc():boolean{
+    return this.authService.hasAdminRight();
+  }
+
+  showTeacherFunc():boolean{
+    return this.authService.hasTeacherRight();
   }
 
   ngAfterViewInit(){

@@ -218,11 +218,12 @@ export class InMemoryDataService implements InMemoryDbService {
     }
 
     let rewardReasons = [
-      'reason1',
-      'reason2',
-      'reason3',
-      'reason4',
-      'reason5']
+      {id:1,desc:'默書100分',tropyWorth:10},
+      {id:2,desc:'測驗100分',tropyWorth:20},
+      {id:3,desc:'考試100分',tropyWorth:30},
+      {id:4,desc:'無缺席',tropyWorth:5},
+      {id:5,desc:'有禮貌',tropyWorth:1}
+    ]
 
     return {roles, users, newses, timetables, dictations, tropy, rewardReasons};
   }

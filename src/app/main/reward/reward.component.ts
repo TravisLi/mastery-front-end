@@ -3,9 +3,10 @@ import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from '../../user/user';
+import { RewardReason } from '../../reward/reward-reason';
 
 import { AuthService } from '../../auth/auth.service';
-import { RewardReasonService } from './reward-reason.service';
+import { RewardReasonService } from '../../reward/reward-reason.service';
 import { UserService } from '../../user/user.service';
 
 // Observable class extensions
@@ -20,7 +21,9 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'reward',
-  templateUrl: './reward.component.html'
+  templateUrl: './reward.component.html',
+  styleUrls: ['./reward.component.css'],
+  providers:[RewardReasonService]
 })
 export class RewardComponent {
 
@@ -29,31 +32,31 @@ export class RewardComponent {
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
 
-  @Input()reason:string;
-  @Input()selectedReason:string;
+  @Input()selectedReason:RewardReason = new RewardReason;
   selectedStudent:User = new User();
   rewarder:User = new User();
   students:Observable<User[]>;
-  rewardReasons:string[];
+  rewardReasons:RewardReason[];
 
   constructor(
     private authService:AuthService,
     private rewardReasonService:RewardReasonService,
     private userService:UserService
-  ){
-
-  }
+  ){}
 
   ngOnInit(){
-    this.titleBar.title='頒發獎章';
+    this.titleBar.title='頒發獎盃';
     this.rewarder = this.authService.user;
     this.rewardReasonService.getRewardReasonsSlowly()
     .then(rewardReasons=>{
       this.rewardReasons=rewardReasons;
+      if(rewardReasons.length>0){
+        this.selectedReason = rewardReasons[0];
+      }
     });
 
     this.students = this.searchTerms
-    .debounceTime(300)
+    .debounceTime(200)
     .distinctUntilChanged()
     .switchMap(term => term ? this.userService.getStudentsByName(term):Observable.of<User[]>([]))
     .catch(error=>{
@@ -74,8 +77,12 @@ export class RewardComponent {
     this.selectedStudent = student;
   }
 
-  onClickReson(){
-    this.reason=this.selectedReason;
+  onSelectReason(id:number){
+    console.log(id);
+    this.selectedReason = this.rewardReasons.find(
+      (reason)=>{return reason.id==id}
+    )
+    //this.selectedReason = reason;
   }
 
   confirm(){

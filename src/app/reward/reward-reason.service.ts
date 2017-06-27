@@ -1,5 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { RewardReason } from './reward-reason';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -15,14 +16,14 @@ export class RewardReasonService {
     return Promise.reject(error.message || error);
   }
 
-  getRewardReasons(): Promise<string[]> {
+  getRewardReasons(): Promise<RewardReason[]> {
     return this.http.get(this.url)
     .toPromise()
-    .then(response => response.json().data as string[])
+    .then(response => response.json().data as RewardReason[])
     .catch(this.handleError);
   }
 
-  getRewardReasonsSlowly(): Promise<string[]> {
+  getRewardReasonsSlowly(): Promise<RewardReason[]> {
     return new Promise(resolve => {
       // Simulate server latency with 2 second delay
       setTimeout(() => resolve(this.getRewardReasons()), 2000);
