@@ -7,7 +7,7 @@ import { Dictation } from './dictation';
 export class DictationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private dictationListUrl = 'api/dictationLists';
+  private url = 'api/dictations';
 
   constructor(private http:Http){}
 
@@ -17,7 +17,7 @@ export class DictationService {
   }
 
   getDictationList(): Promise<Dictation[]> {
-    return this.http.get(this.dictationListUrl)
+    return this.http.get(this.url)
     .toPromise()
     .then(response => response.json().data as Dictation[])
     .catch(this.handleError);

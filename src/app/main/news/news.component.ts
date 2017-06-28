@@ -25,28 +25,19 @@ export class NewsComponent implements OnInit {
     this.newsService.getNews()
     .then(newes=>{
       this.newses=newes;
-      console.log("data");
+      //defer to init the orbit
       setTimeout(()=>{
           Foundation.reInit(['orbit'])
       },200);
-
-      // for(let news of newes){
-      //   console.log(news.img);
-      // }
     });
   }
 
   ngAfterViewInit(){
-    console.log("view");
     jQuery('#orbit').foundation();
   }
 
   ngAfterViewChecked(){
     //jQuery('#orbit').foundation();
 
-  }
-
-  test(la:number){
-    console.log("test" + la);
   }
 }

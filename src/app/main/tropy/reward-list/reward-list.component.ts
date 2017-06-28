@@ -7,6 +7,6 @@ import { Reward } from '../../../reward/reward';
 })
 export class RewardListComponent {
 
-  @Input()rewardList: Reward[];
+  @Input()rewards: Reward[];
 
 }

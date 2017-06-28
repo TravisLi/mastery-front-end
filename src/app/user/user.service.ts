@@ -35,16 +35,25 @@ export class UserService {
   }
 
   getStudentsByName(name:string):Observable<User[]> {
-    const url = `${this.url}?name=${name}`;
-    return this.http.get(url)
-    .map(response=>{
-      let users = response.json().data as User[];
-      let students = users.filter((user)=>{
-        return user.role.type=='student'
-      })
-      console.log(students);
-      return students;
+    if(name=='all'){
+      console.log("all");
+      return this.http.get(this.url)
+      .map(response=>UserService.filterStudent(response));
+    }else{
+      console.log("search by name");
+      const url = `${this.url}?name=${name}`;
+      return this.http.get(url)
+      .map(response=>UserService.filterStudent(response));
+    }
+  }
+
+  private static filterStudent(response:any):User[]{
+    let users = response.json().data as User[];
+    let students = users.filter((user)=>{
+      return user.role.type=='student'
     })
+    console.log(students);
+    return students;
   }
 
   getUserByUsername(username:string): Promise<User>{

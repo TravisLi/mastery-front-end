@@ -60,7 +60,7 @@ export class RewardComponent {
     this.students = this.searchTerms
     .debounceTime(100)
     .distinctUntilChanged()
-    .switchMap(term => term ? this.userService.getStudentsByName(term):Observable.of<User[]>([]))
+    .switchMap(term => term ? this.userService.getStudentsByName(term): Observable.of<User[]>([]))
     .catch(error=>{
       console.log(error);
       return Observable.of<User[]>([]);
@@ -79,6 +79,11 @@ export class RewardComponent {
 
   search(term:string):void{
     this.searchTerms.next(term);
+  }
+
+  searchAll():void{
+    console.log("searchall");
+    this.searchTerms.next('all');
   }
 
   isSelectedStudent(student:User){

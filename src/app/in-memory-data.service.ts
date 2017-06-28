@@ -9,16 +9,16 @@ export class InMemoryDataService implements InMemoryDbService {
     ]
 
     let users = [
-      {id:1, username: 'a', name:'管理員', pwd: 'a', role:roles[0], stid:'1'},
-      {id:2, username: 't1', name:'老師1', pwd: 't1', role: roles[1], stid:'2'},
-      {id:3, username: 't2', name:'老師2', pwd: 't2', role: roles[1], stid:'3'},
-      {id:4, username: 's1', name:'學生1', pwd: 's1', role: roles[2], stid:'4'},
-      {id:5, username: 's2', name:'學生2', pwd: 's2', role: roles[2], stid:'5'},
-      {id:6, username: 's3', name:'學生3', pwd: 's3', role: roles[2], stid:'6'},
-      {id:7, username: 's4', name:'學生4', pwd: 's4', role: roles[2], stid:'7'},
-      {id:8, username: 's5', name:'學生5', pwd: 's5', role: roles[2], stid:'8'},
-      {id:9, username: 's6', name:'學生6', pwd: 's6', role: roles[2], stid:'9'},
-      {id:10, username: 's7', name:'學生7', pwd: 's7', role: roles[2], stid:'10'}
+      {id:1, username: 'a', name:'a管理員', pwd: 'a', role:roles[0], stid:'1'},
+      {id:2, username: 't1', name:'t老師1', pwd: 't1', role: roles[1], stid:'2'},
+      {id:3, username: 't2', name:'t老師2', pwd: 't2', role: roles[1], stid:'3'},
+      {id:4, username: 's1', name:'s學生1', pwd: 's1', role: roles[2], stid:'4'},
+      {id:5, username: 's2', name:'s學生2', pwd: 's2', role: roles[2], stid:'5'},
+      {id:6, username: 's3', name:'s學生3', pwd: 's3', role: roles[2], stid:'6'},
+      {id:7, username: 's4', name:'s學生4', pwd: 's4', role: roles[2], stid:'7'},
+      {id:8, username: 's5', name:'s學生5', pwd: 's5', role: roles[2], stid:'8'},
+      {id:9, username: 's6', name:'s學生6', pwd: 's6', role: roles[2], stid:'9'},
+      {id:10, username: 's7', name:'s學生7', pwd: 's7', role: roles[2], stid:'10'}
     ];
 
     let newses = [

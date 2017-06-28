@@ -8,6 +8,6 @@ import { Redeem } from '../../../redeem/redeem';
 })
 export class RedeemListComponent {
 
-  @Input()redeemList:Redeem[];
+  @Input()redeems:Redeem[];
 
 }

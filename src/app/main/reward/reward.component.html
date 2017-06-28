@@ -1,10 +1,11 @@
 <title-bar></title-bar>
-<div class="row">
+<br>
+<div class="row align-center">
     <div class="small-12 medium-8 large-6 columns end">
       <div class="input-group">
         <input #searchBox class="input-group-field" id="searchBox" type="text" placeholder="學生名稱搜尋" (keyup)="search(searchBox.value)">
         <div class="input-group-button">
-          <button class="button">搜尋全部</button>
+          <button class="button" (click)="searchAll()">搜尋全部</button>
         </div>
       </div>
     </div>
@@ -12,10 +13,10 @@
 <div class="column row">
   <div class="table-scroll" style="overflow-y:auto;max-height:300px;">
       <table>
-        <tr>
+        <!-- <tr>
           <th>ID</th>
           <th>學生名稱</th>
-        </tr>
+        </tr> -->
         <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | async" (click)="onClickStudent(student)">
           <td>{{student.id}}</td>
           <td>{{student.name}}</td>

@@ -5,7 +5,7 @@
 <div class="table-scroll">
   <table>
     <tr>
-      <td *ngFor="let reward of rewardList; let i=index">
+      <td *ngFor="let reward of rewards; let i=index">
         <div class="card" style="width:300px;">
           <div class="card-section">
             <div class="column row">
@@ -13,7 +13,7 @@
             </div>
             <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
               <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
-              {{reward.date}}
+              {{reward.rewardDate}}
             </div>
             <div class="column row" style="background-color:#00ff00; color:white; padding-left:5px">
               <i class="fi-home" style="font-size:22px;vertical-align:middle;"></i>
@@ -21,11 +21,11 @@
             </div>
             <div class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
               <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
-              {{reward.teacher}}
+              {{reward.awardedBy.name}}
             </div>
             <div class="column row" style="background-color:#ff00cc; color:white; padding-left:5px">
               <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
-              {{reward.used}}
+              {{reward.tropyEarned}}
             </div>
           </div>
         </div>

@@ -5,20 +5,23 @@
   <div class="table-scroll">
     <table>
       <tr>
-        <td *ngFor="let redeem of redeemList; let i=index">
+        <td *ngFor="let redeem of redeems; let i=index">
           <div class="card" style="width:300px;">
             <div class="card-section">
+              <div class="column row">
+                {{i+1}}.
+              </div>
               <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
                 <i class="fi-calendar" style="font-size:22px;vertical-align:middle;"></i>
-                {{redeem.date}}
+                {{redeem.redeemDate}}
               </div>
               <div class="column row" style="background-color:#00ff00; color:white; padding-left:5px">
                 <i class="fi-home" style="font-size:22px;vertical-align:middle;"></i>
-                {{redeem.prize}}
+                {{redeem.prize.desc}}
               </div>
               <div class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
                 <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
-                {{redeem.tropyUsed}}
+                {{redeem.prize.tropyRequired}}
               </div>
             </div>
           </div>
