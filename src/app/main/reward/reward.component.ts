@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, NgModule, OnInit, Input, ViewChild } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { Observable } from 'rxjs/Observable';
 
@@ -50,13 +51,14 @@ export class RewardComponent {
     this.rewardReasonService.getRewardReasonsSlowly()
     .then(rewardReasons=>{
       this.rewardReasons=rewardReasons;
+      this.addOtherReason();
       if(rewardReasons.length>0){
         this.selectedReason = rewardReasons[0];
       }
     });
 
     this.students = this.searchTerms
-    .debounceTime(200)
+    .debounceTime(100)
     .distinctUntilChanged()
     .switchMap(term => term ? this.userService.getStudentsByName(term):Observable.of<User[]>([]))
     .catch(error=>{
@@ -64,6 +66,16 @@ export class RewardComponent {
       return Observable.of<User[]>([]);
     })
   };
+
+  addOtherReason():void{
+    if(this.authService.hasAdminRight()){
+      let otherReason:RewardReason = new RewardReason();
+      otherReason.id = 0;
+      otherReason.desc = '其他'
+      otherReason.tropyWorth = 1;
+      this.rewardReasons.push(otherReason);
+    }
+  }
 
   search(term:string):void{
     this.searchTerms.next(term);
@@ -78,15 +90,20 @@ export class RewardComponent {
   }
 
   onSelectReason(id:number){
+    //other is selected
     console.log(id);
-    this.selectedReason = this.rewardReasons.find(
-      (reason)=>{return reason.id==id}
-    )
-    //this.selectedReason = reason;
+    if(id==0){
+        this.selectedReason = new RewardReason();
+        this.selectedReason.id = 0;
+    }else{
+      this.selectedReason = this.rewardReasons.find(
+        (reason)=>{return reason.id==id}
+      )
+    }
   }
 
   confirm(){
-
+    console.log(this.selectedReason);
   }
 
   ngAfterViewInit(){
