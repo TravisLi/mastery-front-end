@@ -1,19 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../../user/user';
-import { RewardReasonService } from './reward-reason.service';
+import { RewardReason } from '../../../../reward/reward-reason';
+import { RewardReasonService } from '../../../../reward/reward-reason.service';
 import { AuthService } from '../../../../auth/auth.service';
 
 @Component({
-  selector: 'reward',
-  templateUrl: './reward.component.html'
+  selector: 'user-reward',
+  templateUrl: './user-reward.component.html'
 })
-export class RewardComponent {
+export class UserRewardComponent {
 
   @Input()student:User = new User();
-  @Input()reason:string;
-  @Input()selectedReason:string;
+  @Input()reason:RewardReason;
+  @Input()selectedReason:RewardReason;
   rewarder:User = new User();
-  rewardReasons:string[];
+  rewardReasons:RewardReason[];
 
   constructor(private authService:AuthService,private rewardReasonService:RewardReasonService){
 

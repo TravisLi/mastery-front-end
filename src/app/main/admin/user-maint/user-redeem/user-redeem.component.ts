@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../../user/user';
 
 @Component({
-  selector: 'redeem',
-  templateUrl: './redeem.component.html'
+  selector: 'user-redeem',
+  templateUrl: './user-redeem.component.html'
 })
-export class RedeemComponent {
+export class UserRedeemComponent {
 
   @Input()user:User;
 

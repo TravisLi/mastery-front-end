@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 //module
-import { TitleBarModule } from './title-bar/title-bar.module'
+import { TitleBarModule } from './title-bar/title-bar.module';
+import { FileUploadModule } from '../file-upload/file-upload.module';
 
 //component
 import { DictationComponent} from './dictation/dictation.component';
@@ -19,7 +20,7 @@ import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
 //routing module
 import { MainRoutingModule } from './main-routing.module';
-
+import { PrizeService } from '../prize/prize.service';
 
 @NgModule({
   imports: [
@@ -41,5 +42,6 @@ import { MainRoutingModule } from './main-routing.module';
     RewardComponent,
     RedeemComponent
   ],
+  providers:[ PrizeService ]
 })
 export class MainModule {}

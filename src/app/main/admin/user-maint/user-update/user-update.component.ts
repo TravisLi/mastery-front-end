@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../../user/user';
 
 @Component({
-  selector: 'update',
-  templateUrl: './update.component.html'
+  selector: 'user-update',
+  templateUrl: './user-update.component.html'
 })
-export class UpdateComponent {
+export class UserUpdateComponent {
 
   @Input()user:User;
 

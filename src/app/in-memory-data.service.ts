@@ -160,32 +160,37 @@ export class InMemoryDataService implements InMemoryDbService {
     let prizes = [
       {
         id:1,
-        desc:'獎品1',
+        name:'獎品1',
         photoUrl:'./assets/prize-img/prize1.jpg',
-        tropyRequired:10,
+        addedDate:'16-06-2016',
+        tropyRequired:10
       },
       {
         id:2,
-        desc:'獎品2',
+        name:'獎品2',
         photoUrl:'./assets/prize-img/prize1.jpg',
+        addedDate:'16-06-2016',
         tropyRequired:10,
       },
       {
         id:3,
-        desc:'獎品3',
+        name:'獎品3',
         photoUrl:'./assets/prize-img/prize1.jpg',
+        addedDate:'16-06-2016',
         tropyRequired:10,
       },
       {
         id:4,
-        desc:'獎品4',
+        name:'獎品4',
         photoUrl:'./assets/prize-img/prize1.jpg',
+        addedDate:'16-06-2016',
         tropyRequired:10,
       },
       {
         id:5,
-        desc:'獎品5',
+        name:'獎品5',
         photoUrl:'./assets/prize-img/prize1.jpg',
+        addedDate:'16-06-2016',
         tropyRequired:10,
       }
     ]
@@ -232,6 +237,6 @@ export class InMemoryDataService implements InMemoryDbService {
       {id:5,desc:'有禮貌',tropyWorth:1}
     ]
 
-    return {roles, users, newses, timetables, dictations, tropy, rewardReasons};
+    return {roles, users, newses, timetables, dictations, tropy, rewardReasons, prizes};
   }
 }

@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../../user/user';
 
 @Component({
-  selector: 'new',
-  templateUrl: './new.component.html'
+  selector: 'user-new',
+  templateUrl: './user-new.component.html'
 })
-export class NewComponent {
+export class UserNewComponent {
 
   @Input()user:User = new User();
 

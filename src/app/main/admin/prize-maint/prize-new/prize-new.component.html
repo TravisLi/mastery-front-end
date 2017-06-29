@@ -1,0 +1,32 @@
+<div class="reveal" id="newReveal" data-reveal>
+  <form #newForm="ngForm" (ngSubmit)="create()">
+		<h4>新增禮物</h4>
+		<div class="row column">
+			<label>禮物名稱
+        <span style="margin-left:0.5rem;" [hidden]="pname.valid || pname.pristine" class="msg-label alert">請輸入禮物名稱</span>
+				<input type="text" [(ngModel)]="prize.name" #pname="ngModel" name="pname" required>
+			</label>
+		</div>
+		<div class="row column">
+			<label>所需獎杯
+        <span style="margin-left:0.5rem;" [hidden]="tropyRequired.valid || tropyRequired.pristine" class="msg-label alert">請輸入所需獎杯</span>
+				<input type="number" [(ngModel)]="prize.tropyRequired" #tropyRequired="ngModel" name="password" required>
+			</label>
+		</div>
+		<div class="row column align-center">
+			<label>相片上載
+        <!-- <span style="margin-left:0.5rem;" [hidden]="photo.valid" class="msg-label alert">請上載相片</span>
+				<input type="file" [(ngModel)]="prize.photoUrl" #photo="ngModel" name="photo" required> -->
+        <file-upload></file-upload>
+      </label>
+		</div>
+		<div class="row column">
+			<div class="expanded button-group">
+				<button type="submit" class="button" id="create" [disabled]="!newForm.valid">儲存</button>
+			</div>
+		</div>
+	</form>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

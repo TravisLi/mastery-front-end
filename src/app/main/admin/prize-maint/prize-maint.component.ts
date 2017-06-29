@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Logger } from '../../../logger/logger';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
-import { User } from '../../../user/user';
-import { UserService } from '../../../user/user.service';
+import { Prize} from '../../../prize/prize';
+import { PrizeService } from '../../../prize/prize.service';
 
 @Component({
   selector: 'prize-maint',
@@ -15,27 +15,27 @@ export class PrizeMaintComponent {
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
 
-  users:User[];
-  selectedUser:User = new User();
+  prizes:Prize[];
+  selectedPrize:Prize = new Prize();
 
-  constructor(private userService:UserService){};
+  constructor(private prizeService:PrizeService){};
 
   ngOnInit(){
-    this.titleBar.title = "用戶管理";
+    this.titleBar.title = "禮物管理";
     this.titleBar.msgBox.sendLoadingMsg();
-    this.userService.getUsersSlowly()
-    .then(users=>{
-      this.users=users;
+    this.prizeService.getPrizesSlowly()
+    .then(prizes=>{
+      this.prizes=prizes;
       this.titleBar.msgBox.clearMsg();
     });
   }
 
-  onClick(user:User){
-    this.selectedUser = user;
+  onClick(prize:Prize){
+    this.selectedPrize = prize;
   }
 
-  isSelectedUser(user:User){
-    return user.id === this.selectedUser.id;
+  isSelectedPrize(prize:Prize){
+    return prize.id === this.selectedPrize.id;
   }
 
   ngAfterViewInit(){

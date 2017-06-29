@@ -1,18 +1,16 @@
 <title-bar></title-bar>
-<new></new>
-<update [user]="selectedUser"></update>
-<reward [student]="selectedUser"></reward>
-<div class="row">
+<br>
+<prize-new></prize-new>
+<!-- <update [user]="selectedUser"></update>
+<reward [student]="selectedUser"></reward> -->
+<div class="row align-center">
     <div class="small-12 medium-6 large-4 columns">
       <div class="input-group">
-        <input class="input-group-field" type="text" placeholder="用戶名稱">
+        <input class="input-group-field" type="text" placeholder="禮物名稱">
         <div class="input-group-button">
           <button class="button">搜尋</button>
         </div>
       </div>
-    </div>
-    <div class="small-12 medium-6 large-4 columns">
-      <button class="button">新增</button>
     </div>
 </div>
 <div class="column row">
@@ -20,11 +18,15 @@
       <table>
         <tr>
           <th>ID</th>
-          <th>用戶名稱</th>
+          <th>禮物名稱</th>
+          <th>所需獎杯</th>
+          <th>加入日期</th>
         </tr>
-        <tr [class.selected]="isSelectedUser(user)" *ngFor="let user of users" (click)="onClick(user)">
-          <td>{{user.id}}</td>
-          <td>{{user.username}}</td>
+        <tr [class.selected]="isSelectedPrize(prize)" *ngFor="let prize of prizes" (click)="onClick(prize)">
+          <td>{{prize.id}}</td>
+          <td>{{prize.name}}</td>
+          <td>{{prize.tropyRequired}}</td>
+          <td>{{prize.addedDate}}</td>
         </tr>
       </table>
   </div>
@@ -32,10 +34,8 @@
 <div class="row">
   <div class="small-12 medium-6 large-4 columns end">
     <div class="expanded button-group">
-      <button class="button" id="newBtn" data-open="neweveal">新增</button>
-      <button class="button" id="updateBtn" data-open="updateReveal" [disabled]="!selectedUser.id">更新</button>
-      <button class="button" id="rewardBtn" data-open="rewardReveal" [disabled]="!selectedUser.id">頒發獎章</button>
-      <button class="button" id="redeemBtn" data-open="redeemReveal" [disabled]="!selectedUser.id">獎品換領</button>
+      <button class="button" id="newBtn" data-open="newReveal">新增</button>
+      <button class="button" id="updateBtn" data-open="updateReveal" [disabled]="!selectedPrize.id">更新</button>
     </div>
   </div>
 </div>

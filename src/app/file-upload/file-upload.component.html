@@ -1,0 +1,12 @@
+<div class="uploader" ondragover="return false;"
+    (dragenter)="handleDragEnter()"
+    (dragleave)="handleDragLeave()"
+    (drop)="handleDrop($event)">
+
+    <i class="fi-upload"></i>
+
+    <img [src]="imageSrc" (load)="handleImageLoad()"/>
+
+    <input type="file" name="file" accept="image/*"
+        (change)="handleInputChange($event)">
+</div>

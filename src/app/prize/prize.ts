@@ -1,6 +1,10 @@
+import { Redeem } from "../redeem/redeem";
+
 export class Prize{
   id:number;
-  desc:string;
+  name:string;
   photoUrl:string;
   tropyRequired:number;
+  addedDate:Date;
+  redeem:Redeem;
 }
