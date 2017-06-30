@@ -33,6 +33,13 @@ export class AuthService {
     })
   }
 
+  hasStudentRight():boolean{
+    if(this.user){
+        return (this.user.role.type == RoleType[RoleType.student])
+    }
+    return false;
+  }
+
   hasTeacherRight():boolean{
     if(this.user){
         return (this.user.role.type == RoleType[RoleType.teacher] || this.user.role.type == RoleType[RoleType.admin])

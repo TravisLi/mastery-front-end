@@ -1,12 +1,16 @@
-<div class="uploader" ondragover="return false;"
+<div class="uploader">
+  <label>相片上載
+    <div ondragover="return false;"
     (dragenter)="handleDragEnter()"
     (dragleave)="handleDragLeave()"
-    (drop)="handleDrop($event)">
+    (drop)="handleDrop($event)"
+    style="border-style:dashed;border-color:#efefef;">
 
-    <i class="fi-upload"></i>
+    <i class="fi-upload icon icon-upload" [class.hide]="imageLoaded"></i>
 
-    <img [src]="imageSrc" (load)="handleImageLoad()"/>
+    <img [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded"/>
 
-    <input type="file" name="file" accept="image/*"
-        (change)="handleInputChange($event)">
+    <input type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+  </div>
+</label>
 </div>

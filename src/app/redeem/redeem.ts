@@ -7,5 +7,5 @@ export class Redeem {
   prize:Prize;
   redeemedBy:User;
   confirmedBy:User;
-  photoUrl:string;
+  photo:string;
 }

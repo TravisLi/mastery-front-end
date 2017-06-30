@@ -4,7 +4,7 @@
     <h5>{{lessonOfDay.date}} - {{lessonOfDay.dayOfWeek}}</h5>
   </div>
   <div class="row">
-    <div *ngFor="let lesson of lessonOfDay.lessons" class="medium-3 columns">
+    <div *ngFor="let lesson of lessonOfDay.lessons; let l=last" class="small-12 medium-6 large-3 columns">
       <lesson [lesson]="lesson"></lesson>
     </div>
   </div>

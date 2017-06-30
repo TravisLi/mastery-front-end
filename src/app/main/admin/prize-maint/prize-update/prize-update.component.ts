@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Prize } from '../../../../prize/prize';
 
 @Component({
-  selector: 'prize-new',
-  templateUrl: './prize-new.component.html'
+  selector: 'prize-update',
+  templateUrl: './prize-update.component.html'
 })
-export class PrizeNewComponent {
+export class PrizeUpdateComponent {
 
   @Input()prize:Prize = new Prize();
 
@@ -16,7 +16,7 @@ export class PrizeNewComponent {
   }
 
   confirm(){
-    console.log(this.prize.photo);
+    
   }
 
 }

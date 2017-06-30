@@ -22,6 +22,10 @@ export class MainComponent implements OnInit {
     //this.router.navigate(['news'],{ relativeTo: this.route });
   }
 
+  showStudentFunc():boolean{
+    return this.authService.hasStudentRight();
+  }
+
   showAdminFunc():boolean{
     return this.authService.hasAdminRight();
   }

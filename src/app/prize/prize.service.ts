@@ -23,6 +23,17 @@ export class PrizeService {
     .catch(this.handleError);
   }
 
+  getNonRedeemedPrize():Promise<Prize[]>{
+    return this.http.get(this.url)
+    .toPromise().then(response=>{
+      let prizes = response.json().data as Prize[];
+      prizes.filter((prize)=>{
+        return prize.redeem!=null;
+      })
+      return prizes;
+    })
+  }
+
   getPrizesSlowly(): Promise<Prize[]> {
     return new Promise(resolve => {
       // Simulate server latency with 2 second delay

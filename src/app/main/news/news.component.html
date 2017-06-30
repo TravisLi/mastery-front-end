@@ -10,7 +10,7 @@
         <li *ngFor="let news of newses;let i=index; let la=last;" class="orbit-slide" [class.is-active]="i==0">
           <figure class="orbit-figure">
             <img class="orbit-image" src="{{news.img}}" style="max-height:500px">
-            <figcaption class="orbit-caption" style="top:0;">
+            <figcaption class="orbit-caption" style="top:0;bottom:auto;">
               {{news.date}}-{{news.title}}
             </figcaption>
           </figure>

@@ -9,28 +9,27 @@ import { Component, Input } from '@angular/core';
 export class FileUploadComponent {
   dragging: boolean = false;
   loaded: boolean = false;
-  imageLoaded: boolean = false;
-  imageSrc: string = '';
+  @Input()imageSrc: string = '';
 
   handleDragEnter() {
+    console.log('drag enter');
     this.dragging = true;
   }
 
   handleDragLeave() {
+    console.log('drag leave');
     this.dragging = false;
   }
 
   handleDrop(e) {
+    console.log('handle drop');
     e.preventDefault();
     this.dragging = false;
     this.handleInputChange(e);
   }
 
-  handleImageLoad() {
-    this.imageLoaded = true;
-  }
-
   handleInputChange(e) {
+    console.log('input change');
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
     var pattern = /image-*/;
@@ -50,7 +49,6 @@ export class FileUploadComponent {
   _handleReaderLoaded(e) {
     var reader = e.target;
     this.imageSrc = reader.result;
-    this.loaded = true;
   }
 
 }
