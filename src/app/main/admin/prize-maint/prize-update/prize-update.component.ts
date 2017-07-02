@@ -7,7 +7,7 @@ import { Prize } from '../../../../prize/prize';
 })
 export class PrizeUpdateComponent {
 
-  @Input()prize:Prize = new Prize();
+  @Input()prize:Prize;
 
   ngOnInit(){};
 
@@ -15,8 +15,8 @@ export class PrizeUpdateComponent {
   //jQuery('#updateReveal').foundation();
   }
 
-  confirm(){
-    
+  update(){
+    jQuery('#prizeUpdateReveal').foundation('close');
   }
 
 }

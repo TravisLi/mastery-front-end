@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 
 export class FileUploadComponent {
   dragging: boolean = false;
-  loaded: boolean = false;
+  imageLoaded: boolean = false;
   @Input()imageSrc: string = '';
 
   handleDragEnter() {
@@ -28,6 +28,11 @@ export class FileUploadComponent {
     this.handleInputChange(e);
   }
 
+  handleImageLoad(){
+    console.log('image load');
+    this.imageLoaded = true;
+  }
+
   handleInputChange(e) {
     console.log('input change');
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -40,13 +45,14 @@ export class FileUploadComponent {
       return;
     }
 
-    this.loaded = false;
+    //this.loaded = false;
 
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
 
   _handleReaderLoaded(e) {
+    console.log('rader change');
     var reader = e.target;
     this.imageSrc = reader.result;
   }

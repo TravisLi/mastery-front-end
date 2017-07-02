@@ -1,7 +1,7 @@
 <title-bar></title-bar>
 <user-new></user-new>
 <user-update [user]="selectedUser"></user-update>
-<div class="row">
+<div class="row align-center">
     <div class="small-12 medium-6 large-4 columns">
       <div class="input-group">
         <input class="input-group-field" type="text" placeholder="用戶名稱">
@@ -10,9 +10,6 @@
         </div>
       </div>
     </div>
-    <div class="small-12 medium-6 large-4 columns">
-      <button class="button">新增</button>
-    </div>
 </div>
 <div class="column row">
   <div class="table-scroll" style="overflow-y:auto;max-height:300px;">
@@ -20,10 +17,12 @@
         <tr>
           <th>ID</th>
           <th>用戶名稱</th>
+          <th>顯示名稱</th>
         </tr>
         <tr [class.selected]="isSelectedUser(user)" *ngFor="let user of users" (click)="onClick(user)">
           <td>{{user.id}}</td>
           <td>{{user.username}}</td>
+          <td>{{user.name}}</td>
         </tr>
       </table>
   </div>
@@ -31,8 +30,8 @@
 <div class="row">
   <div class="small-12 medium-6 large-4 columns end">
     <div class="expanded button-group">
-      <button class="button" id="newBtn" data-open="neweveal">新增</button>
-      <button class="button" id="updateBtn" data-open="updateReveal" [disabled]="!selectedUser.id">更新</button>
+      <button class="button" data-open="userNewReveal">新增</button>
+      <button class="button" data-open="userUpdateReveal" [disabled]="!selectedUser.id">更新</button>
       <!-- <button class="button" id="rewardBtn" data-open="rewardReveal" [disabled]="!selectedUser.id">頒發獎章</button>
       <button class="button" id="redeemBtn" data-open="redeemReveal" [disabled]="!selectedUser.id">獎品換領</button> -->
     </div>

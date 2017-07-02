@@ -15,8 +15,8 @@ export class PrizeNewComponent {
   //jQuery('#updateReveal').foundation();
   }
 
-  confirm(){
-    console.log(this.prize.photo);
+  create(){
+    jQuery('#userNewReveal').foundation('close');
   }
 
 }

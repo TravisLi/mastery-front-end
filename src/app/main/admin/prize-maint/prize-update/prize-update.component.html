@@ -1,6 +1,6 @@
-<div class="reveal" id="updateReveal" data-reveal>
-  <form #newForm="ngForm" (ngSubmit)="create()">
-		<h4>新增禮物</h4>
+<div class="reveal" id="prizeUpdateReveal" data-reveal>
+  <form #updateForm="ngForm" (ngSubmit)="update()">
+		<h4>更新禮物資料</h4>
 		<div class="row column">
 			<label>禮物名稱
         <span style="margin-left:0.5rem;" [hidden]="pname.valid || pname.pristine" class="msg-label alert">請輸入禮物名稱</span>
@@ -10,15 +10,15 @@
 		<div class="row column">
 			<label>所需獎杯
         <span style="margin-left:0.5rem;" [hidden]="tropyRequired.valid || tropyRequired.pristine" class="msg-label alert">請輸入所需獎杯</span>
-				<input type="number" [(ngModel)]="prize.tropyRequired" #tropyRequired="ngModel" name="password" required>
+				<input type="number" [(ngModel)]="prize.tropyRequired" #tropyRequired="ngModel" name="tropyRequired" required>
 			</label>
 		</div>
 		<div class="row column">
-        <file-upload></file-upload>
+        <file-upload [imageSrc]="prize.photo"></file-upload>
 		</div>
 		<div class="row column">
 			<div class="expanded button-group">
-				<button type="submit" class="button" id="create" [disabled]="!newForm.valid">儲存</button>
+				<button type="submit" class="button" [disabled]="!updateForm.valid">儲存</button>
 			</div>
 		</div>
 	</form>

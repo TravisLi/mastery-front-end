@@ -3,7 +3,8 @@ import { User } from '../user/user';
 
 export class Redeem {
   id:number;
-  redeemDate:Date;
+  applyDate:Date;
+  confirmDate:Date;
   prize:Prize;
   redeemedBy:User;
   confirmedBy:User;

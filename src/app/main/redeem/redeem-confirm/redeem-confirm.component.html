@@ -1,0 +1,29 @@
+<title-bar></title-bar>
+<div class="column row">
+  <div class="table-scroll" style="overflow-y:auto;max-height:300px;">
+      <table>
+        <tr>
+          <th>換領學生</th>
+          <th>申請日期</th>
+          <th>換領獎品</th>
+        </tr>
+        <tr [class.selected]="isSelectedRedeem(redeem)" *ngFor="let redeem of redeems" (click)="onClick(redeem)">
+          <td>{{redeem.redeemedBy.name}}</td>
+          <td>{{redeem.applyDate}}</td>
+          <td>{{redeem.prize.name}}</td>
+        </tr>
+      </table>
+  </div>
+</div>
+<div *ngIf="selectedRedeem.id" class="row column">
+  <form #confirForm="ngForm" (ngSubmit)="confirm()">
+		<div class="row column">
+        <file-upload [imageSrc]="selectedRedeem.photo"></file-upload>
+		</div>
+		<div class="row column">
+			<div class="expanded button-group">
+				<button type="submit" class="button" [disabled]="!confirmForm.valid">確認</button>
+			</div>
+		</div>
+	</form>
+</div>

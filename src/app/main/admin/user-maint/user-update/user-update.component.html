@@ -1,5 +1,5 @@
-<div class="reveal" id="updateReveal" data-reveal>
-  <form #updateForm="ngForm" name="updateForm">
+<div class="reveal" id="userUpdateReveal" data-reveal>
+  <form #updateForm="ngForm" name="updateForm" (ngSubmit)="save()">
 		<h4>更新用戶資料</h4>
 		<div class="row column">
 			<label>用戶名稱 (ID:{{user.id}})
@@ -15,7 +15,7 @@
 		</div>
 		<div class="row column">
 			<label>用戶類形
-				<select [(ngModel)]="user.role" name="role">
+				<select [(ngModel)]="user.role.type" name="role">
 					<option value="student">學生</option>
 					<option value="teacher">老師</option>
 					<option value="staff">職員</option>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="row column">
 			<div class="expanded button-group">
-				<button (click)="save()" class="button" id="save" [disabled]="!updateForm.valid">儲存</button>
+				<button type="submit" class="button" [disabled]="!updateForm.valid">儲存</button>
 			</div>
 		</div>
 	</form>

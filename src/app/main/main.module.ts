@@ -18,16 +18,20 @@ import { RewardListComponent } from './tropy/reward-list/reward-list.component';
 import { RedeemListComponent } from './tropy/redeem-list/redeem-list.component';
 import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
+import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.component';
+
 //routing module
 import { MainRoutingModule } from './main-routing.module';
 import { PrizeService } from '../prize/prize.service';
+import { RedeemService } from '../redeem/redeem.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MainRoutingModule,
-    TitleBarModule
+    TitleBarModule,
+    FileUploadModule
   ],
   declarations: [
     MainComponent,
@@ -40,8 +44,9 @@ import { PrizeService } from '../prize/prize.service';
     RewardListComponent,
     RedeemListComponent,
     RewardComponent,
-    RedeemComponent
+    RedeemComponent,
+    RedeemConfirmComponent
   ],
-  providers:[ PrizeService ]
+  providers:[ PrizeService, RedeemService ]
 })
 export class MainModule {}

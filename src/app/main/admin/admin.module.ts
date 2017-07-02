@@ -17,6 +17,7 @@ import { UserRedeemComponent } from './user-maint/user-redeem/user-redeem.compon
 
 import { PrizeMaintComponent } from './prize-maint/prize-maint.component';
 import { PrizeNewComponent } from './prize-maint/prize-new/prize-new.component';
+import { PrizeUpdateComponent } from './prize-maint/prize-update/prize-update.component';
 
 import { RewardReasonService } from '../../reward/reward-reason.service';
 
@@ -36,7 +37,8 @@ import { RewardReasonService } from '../../reward/reward-reason.service';
     UserRewardComponent,
     UserRedeemComponent,
     PrizeMaintComponent,
-    PrizeNewComponent
+    PrizeNewComponent,
+    PrizeUpdateComponent
   ],
   providers: [
     RewardReasonService

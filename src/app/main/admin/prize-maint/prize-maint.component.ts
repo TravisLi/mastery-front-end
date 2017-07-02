@@ -28,6 +28,7 @@ export class PrizeMaintComponent {
       this.prizes=prizes;
       this.titleBar.msgBox.clearMsg();
     });
+    this.selectedPrize.photo='';
   }
 
   onClick(prize:Prize){
@@ -39,10 +40,10 @@ export class PrizeMaintComponent {
   }
 
   ngAfterViewInit(){
-    jQuery('#newReveal').foundation();
-    jQuery('#updateReveal').foundation();
-    jQuery('#rewardReveal').foundation();
-    jQuery('#redeemReveal').foundation();
+    jQuery('#prizeNewReveal').foundation();
+    jQuery('#prizeUpdateReveal').foundation();
+    // jQuery('#rewardReveal').foundation();
+    // jQuery('#redeemReveal').foundation();
   }
 
 }

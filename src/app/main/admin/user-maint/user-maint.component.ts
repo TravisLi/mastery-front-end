@@ -2,12 +2,12 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Logger } from '../../../logger/logger';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 import { User } from '../../../user/user';
+import { Role } from '../../../role/role';
 import { UserService } from '../../../user/user.service';
 
 @Component({
   selector: 'user-maint',
   templateUrl: './user-maint.component.html',
-  styleUrls:['./user-maint.component.css']
 })
 export class UserMaintComponent {
 
@@ -29,6 +29,9 @@ export class UserMaintComponent {
       this.users=users;
       this.titleBar.msgBox.clearMsg();
     });
+    let role = new Role();
+    role.type = '';
+    this.selectedUser.role = role;
   }
 
   onClick(user:User){
@@ -40,8 +43,8 @@ export class UserMaintComponent {
   }
 
   ngAfterViewInit(){
-    jQuery('#newReveal').foundation();
-    jQuery('#updateReveal').foundation();
+    jQuery('#userNewReveal').foundation();
+    jQuery('#userUpdateReveal').foundation();
     jQuery('#rewardReveal').foundation();
     jQuery('#redeemReveal').foundation();
   }

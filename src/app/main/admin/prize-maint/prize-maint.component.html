@@ -1,7 +1,7 @@
 <title-bar></title-bar>
 <br>
 <prize-new></prize-new>
-<prize-update></prize-update>
+<prize-update [prize]="selectedPrize"></prize-update>
 <!-- <update [user]="selectedUser"></update>
 <reward [student]="selectedUser"></reward> -->
 <div class="row align-center">
@@ -35,9 +35,9 @@
 <div class="row">
   <div class="small-12 medium-6 large-4 columns end">
     <div class="expanded button-group">
-      <button class="button" id="newBtn" data-open="newReveal">新增</button>
-      <button class="button" id="updateBtn" data-open="updateReveal" [disabled]="!selectedPrize.id">更新</button>
-      <button class="button" id="deleteBtn" [disabled]="!selectedPrize.id">刪除</button>
+      <button class="button" data-open="prizeNewReveal">新增</button>
+      <button class="button" data-open="prizeUpdateReveal" [disabled]="!selectedPrize.id">更新</button>
+      <button class="button" [disabled]="!selectedPrize.id">刪除</button>
     </div>
   </div>
 </div>

@@ -84,28 +84,28 @@ export class InMemoryDataService implements InMemoryDbService {
 
     let lessonOfDays = [
       {
-        dayOfWeek: '星期二',
+        dayOfWeek: '星期一',
         date: '17/06/2017',
         lessons: lessons,
       },
       {
         dayOfWeek: '星期二',
-        date: '17/06/2017',
+        date: '18/06/2017',
         lessons: lessons,
       },
       {
-        dayOfWeek: '星期二',
-        date: '17/06/2017',
+        dayOfWeek: '星期三',
+        date: '19/06/2017',
         lessons: lessons,
       },
       {
-        dayOfWeek: '星期二',
-        date: '17/06/2017',
+        dayOfWeek: '星期四',
+        date: '20/06/2017',
         lessons: lessons,
       },
       {
-        dayOfWeek: '星期二',
-        date: '17/06/2017',
+        dayOfWeek: '星期五',
+        date: '21/06/2017',
         lessons: lessons,
       }
     ]
@@ -208,7 +208,8 @@ export class InMemoryDataService implements InMemoryDbService {
     let redeems = [
       {
         id:1,
-        redeemDate:'16-06-2017',
+        applyDate:'16-06-2017',
+        confirmDate:'16-06-2017',
         prize: prizes[1],
         redeemedBy:users[2],
         confirmedBy:users[0],
@@ -216,19 +217,39 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id:2,
-        redeemDate:'16-06-2017',
+        applyDate:'16-06-2017',
+        confirmDate:'',
         prize: prizes[1],
         redeemedBy:users[2],
-        confirmedBy:users[0],
-        photo:'./assets/redeem-img/redeem1.jpg'
+        confirmedBy:'',
+        photo:''
       },
       {
         id:3,
-        redeemDate:'16-06-2017',
+        applyDate:'16-06-2017',
+        confirmDate:'',
         prize: prizes[1],
         redeemedBy:users[2],
-        confirmedBy:users[0],
-        photo:'./assets/redeem-img/redeem1.jpg'
+        confirmedBy:'',
+        photo:''
+      },
+      {
+        id:4,
+        applyDate:'16-06-2017',
+        confirmDate:'',
+        prize: prizes[1],
+        redeemedBy:users[2],
+        confirmedBy:'',
+        photo:''
+      },
+      {
+        id:5,
+        applyDate:'16-06-2017',
+        confirmDate:'',
+        prize: prizes[1],
+        redeemedBy:users[2],
+        confirmedBy:'',
+        photo:''
       },
     ]
 
@@ -247,6 +268,6 @@ export class InMemoryDataService implements InMemoryDbService {
       {id:5,desc:'有禮貌',tropyWorth:1}
     ]
 
-    return {roles, users, newses, timetables, dictations, tropy, rewardReasons, prizes};
+    return {roles, users, newses, timetables, dictations, tropy, rewardReasons, prizes, redeems};
   }
 }

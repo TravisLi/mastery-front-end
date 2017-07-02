@@ -11,8 +11,8 @@ import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
 
-
 import { RedeemComponent} from './redeem/redeem.component';
+import { RedeemConfirmComponent} from './redeem/redeem-confirm/redeem-confirm.component';
 import { RewardComponent } from './reward/reward.component';
 
 import { AuthGuard } from '../auth/auth-guard.service';
@@ -39,6 +39,7 @@ const mainRoutes: Routes = [
           { path: 'tropy', component: TropyComponent },
           { path: 'timetable', component: TimetableComponent },
           { path: 'redeem', component: RedeemComponent },
+          { path: 'redeem-confirm', component: RedeemConfirmComponent },
           { path: 'reward',
             component: RewardComponent,
             canActivate: [TeacherAuthGuard]},

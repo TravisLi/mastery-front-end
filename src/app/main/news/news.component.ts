@@ -15,6 +15,7 @@ export class NewsComponent implements OnInit {
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
   newses: News[] = News[0];
+  dataLoaded:boolean = false;
 
   constructor(private authService:AuthService, private newsService: NewsService){
 
@@ -25,6 +26,7 @@ export class NewsComponent implements OnInit {
     this.newsService.getNews()
     .then(newes=>{
       this.newses=newes;
+      this.dataLoaded = true;
       //defer to init the orbit
       setTimeout(()=>{
           Foundation.reInit(['orbit'])

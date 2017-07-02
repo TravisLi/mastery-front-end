@@ -15,4 +15,8 @@ export class UserUpdateComponent {
   //jQuery('#updateReveal').foundation();
   }
 
+  save(){
+    jQuery('#userUpdateReveal').foundation('close');
+  };
+
 }
