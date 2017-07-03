@@ -7,5 +7,5 @@ export class User{
   name: string;
   pwd: string;
   role: Role;
-  stLink: string;
+  stid: string;
 }

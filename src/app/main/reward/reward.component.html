@@ -55,7 +55,7 @@
         <!-- <label>獲發學生: {{selectedStudent.name}}</label> -->
         <label>獎盃數目
           <span style="margin-left:0.5rem;" [hidden]="tropyWorth.valid || tropyWorth.pristine" class="msg-label alert">請輸入獎盃數目</span>
-          <input type="text" id="tropyWorth" [(ngModel)]="selectedReason.tropyWorth" name="tropyWorth" #tropyWorth="ngModel" [readonly]="!selectedReason.id==0" required>
+          <input type="text" id="tropyWorth" [(ngModel)]="selectedReason.tropyWorth" name="tropyWorth" #tropyWorth="ngModel" [readonly]="selectedReason.id!=0" required>
      		</label>
       </div>
       <div class="small-12 medium-6 large-8 columns">

@@ -12,8 +12,6 @@ import { AdminComponent } from './admin.component';
 import { UserMaintComponent } from './user-maint/user-maint.component';
 import { UserNewComponent } from './user-maint/user-new/user-new.component';
 import { UserUpdateComponent } from './user-maint/user-update/user-update.component';
-import { UserRewardComponent } from './user-maint/user-reward/user-reward.component';
-import { UserRedeemComponent } from './user-maint/user-redeem/user-redeem.component';
 
 import { PrizeMaintComponent } from './prize-maint/prize-maint.component';
 import { PrizeNewComponent } from './prize-maint/prize-new/prize-new.component';
@@ -34,8 +32,6 @@ import { RewardReasonService } from '../../reward/reward-reason.service';
     UserMaintComponent,
     UserNewComponent,
     UserUpdateComponent,
-    UserRewardComponent,
-    UserRedeemComponent,
     PrizeMaintComponent,
     PrizeNewComponent,
     PrizeUpdateComponent
