@@ -10,20 +10,29 @@
       </div>
     </div>
 </div>
-<div class="column row">
+<div class="column row"  style="overflow-y:auto;max-height:300px;">
+  <div *ngFor="let students of studentss" class="row">
+    <div *ngFor="let student of students"
+        class="small-12 medium-expand columns item"
+        [class.item-selected]="isSelectedStudent(student)"
+        (click)="onClickStudent(student)">
+      <span>{{student.name}}</span>
+    </div>
+  </div>
+<!-- <div class="column row">
   <div class="table-scroll" style="overflow-y:auto;max-height:300px;">
       <table>
         <!-- <tr>
           <th>ID</th>
           <th>學生名稱</th>
-        </tr> -->
+        </tr>
         <tr [class.selected]="isSelectedStudent(student)" *ngFor="let student of students | async" (click)="onClickStudent(student)">
           <td>{{student.id}}</td>
           <td>{{student.name}}</td>
         </tr>
       </table>
   </div>
-</div>
+</div> -->
 <div *ngIf="selectedStudent.id" class="row column">
   <hr>
   <form #rewardForm="ngForm" (ngSubmit)="confirm()">

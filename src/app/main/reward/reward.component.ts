@@ -9,6 +9,7 @@ import { RewardReason } from '../../reward/reward-reason';
 import { AuthService } from '../../auth/auth.service';
 import { RewardReasonService } from '../../reward/reward-reason.service';
 import { UserService } from '../../user/user.service';
+import { Util } from '../../util/util';
 
 // Observable class extensions
 import 'rxjs/add/observable/of';
@@ -36,6 +37,7 @@ export class RewardComponent {
   @Input()selectedReason:RewardReason = new RewardReason;
   selectedStudent:User = new User();
   rewarder:User = new User();
+  studentss:User[][];
   students:Observable<User[]>;
   rewardReasons:RewardReason[];
 
@@ -64,6 +66,10 @@ export class RewardComponent {
     .catch(error=>{
       console.log(error);
       return Observable.of<User[]>([]);
+    })
+
+    this.students.subscribe((students)=>{
+      this.studentss = Util.toArrayOfArray(students);
     })
   };
 

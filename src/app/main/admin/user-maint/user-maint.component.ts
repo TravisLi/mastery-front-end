@@ -4,6 +4,8 @@ import { TitleBarComponent } from '../../title-bar/title-bar.component';
 import { User } from '../../../user/user';
 import { Role } from '../../../role/role';
 import { UserService } from '../../../user/user.service';
+import { Util } from '../../../util/util';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'user-maint',
@@ -15,7 +17,7 @@ export class UserMaintComponent {
 
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
-
+  userss: User[][];
   users:User[];
   selectedUser:User = new User();
 
@@ -27,6 +29,8 @@ export class UserMaintComponent {
     this.userService.getUsersSlowly()
     .then(users=>{
       this.users=users;
+      this.userss = Util.toArrayOfArray(users);
+      console.log(this.userss);
       this.titleBar.msgBox.clearMsg();
     });
     let role = new Role();

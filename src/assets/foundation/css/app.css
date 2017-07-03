@@ -37,3 +37,16 @@
   background-color: #CFD8DC;
   color: white;
 }
+
+.item {
+  cursor: pointer;
+  margin: 2px;
+  background-color: #1779ba;
+  color: #fefefe;
+  border-radius: 5px;
+}
+
+.item-selected{
+  background-color: #fefefe;
+  color: #1779ba;
+}

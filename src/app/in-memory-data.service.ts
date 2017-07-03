@@ -20,7 +20,8 @@ export class InMemoryDataService implements InMemoryDbService {
       {id:7, username: 's4', name:'s學生4', pwd: 's4', role: roles[2], stid:'7', rewards:rewards},
       {id:8, username: 's5', name:'s學生5', pwd: 's5', role: roles[2], stid:'8', rewards:rewards},
       {id:9, username: 's6', name:'s學生6', pwd: 's6', role: roles[2], stid:'9', rewards:rewards},
-      {id:10, username: 's7', name:'s學生7', pwd: 's7', role: roles[2], stid:'10', rewards:rewards}
+      {id:10, username: 's7', name:'s學生7', pwd: 's7', role: roles[2], stid:'10', rewards:rewards},
+      {id:11, username: 's8', name:'s學生8', pwd: 's8', role: roles[2], stid:'11', rewards:rewards}
     ];
 
     let newses = [
