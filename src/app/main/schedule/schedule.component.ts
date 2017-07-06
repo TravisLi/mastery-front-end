@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
-
+import { ScheduleItem, WeekDay } from './schedule-item';
 
 @Component({
   selector: 'schdule',
@@ -10,13 +10,18 @@ export class ScheduleComponent implements OnInit {
 
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
-  base:string[][] = [];
+  scheduleItemss:ScheduleItem[][] = [];
   fromHr:number = 8;
   toHr:number = 23;
   highlight:boolean = false;
-  weekDays:string[] = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  weekDays:string[];
 
   constructor(){
+
+    for(let wd in WeekDay){
+      this.weekDays.push(WeekDay[wd]);
+    }
+
   };
 
   handleDragEnter(e):void{
@@ -47,31 +52,31 @@ export class ScheduleComponent implements OnInit {
     //console.log(rowReq);
     let runningHr:number = this.fromHr;
     for(let rowNo:number=0;rowNo<rowReq;rowNo++){
-      let columns:string[] = [];
-      for(let columnNo:number=0;columnNo<8;columnNo++){
+      let columns:ScheduleItem[] = [];
+      for(let columnNo:number=WeekDay.None;columnNo<=WeekDay.Sat;columnNo++){
         //first row holding week day
         if(rowNo==0){
           if(columnNo==0){
-            columns.push('');
+            columns.push(new ScheduleItem(WeekDay.None,0,0));
           }else{
-            columns.push(this.weekDays[columnNo-1]);
+            columns.push(new ScheduleItem(WeekDay.None,0,0,WeekDay[columnNo]));
           }
         }else{
           //first column
           if(columnNo==0){
             if(rowNo%2==0){
-              columns.push(`${runningHr}:00`);
+              columns.push(new ScheduleItem(WeekDay.None,0,0,`${runningHr}:00`));
             }else{
-              columns.push(`${runningHr}:30`);
+              columns.push(new ScheduleItem(WeekDay.None,0,0,`${runningHr}:30`));
               runningHr++;
             }
           }else{
-            columns.push(' ');
+            columns.push(new ScheduleItem(WeekDay.None,0,0,`${runningHr}:30`));
           }
         }
       }
       //console.log(columns);
-      this.base.push(columns);
+      this.scheduleItemss.push(columns);
     }
     //console.log(this.base);
   }
