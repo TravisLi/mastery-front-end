@@ -1,0 +1,40 @@
+<h2>Userinfo</h2>
+<div class="column row">
+    <p>用戶名稱: {{user.username}}</p>
+</div>
+<div class="column row">
+    <p>用戶名稱: {{user.username}}</p>
+</div>
+<div class="column row">
+    <p>用戶類型: {{user.role.RoleType}}</p>
+</div>
+<div class="row">
+  <div class="medium-6 columns">
+    <fieldset class="fieldset">
+      <legend>更改密碼</legend>
+        <form  (ngSubmit)="onSubmit()" #chPwdForm="ngForm">
+        <div class="column row">
+          <label>舊密碼
+            <input type="text" [(ngModel)]="oldPwd" name="oldPwd" #oPwd="ngModel" required>
+          </label>
+          <div [hidden]="oPwd.valid || oPwd.pristine" class="callout alert" #er>輸入新密碼</div>
+        </div>
+        <div class="column row">
+          <label>新密碼
+            <input type="text" [(ngModel)]="username" id="username" name="username" #uname="ngModel" required>
+          </label>
+          <div [hidden]="uname.valid || uname.pristine" class="callout alert" #er>Username is reuqired</div>
+        </div>
+        <div class="column row">
+          <label>再輸入新密碼
+            <input type="text" [(ngModel)]="username" id="username" name="username" #uname="ngModel" required>
+          </label>
+          <div [hidden]="uname.valid || uname.pristine" class="callout alert" #er>Username is reuqired</div>
+        </div>
+        <div class="column row">
+          <button type="submit" class="button" [disabled]="!chPwdForm.form.valid">Submit</button>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</div>

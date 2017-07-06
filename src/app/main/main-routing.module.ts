@@ -10,6 +10,7 @@ import { DictationComponent } from './dictation/dictation.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 import { RedeemComponent} from './redeem/redeem.component';
 import { RedeemConfirmComponent} from './redeem/redeem-confirm/redeem-confirm.component';
@@ -36,6 +37,7 @@ const mainRoutes: Routes = [
           },
           { path: 'dictation', component: DictationComponent, canDeactivate:[CanDeactivateGuard]},
           { path: 'news', component: NewsComponent },
+          { path: 'schedule', component: ScheduleComponent },
           { path: 'tropy', component: TropyComponent },
           { path: 'timetable', component: TimetableComponent },
           { path: 'redeem', component: RedeemComponent },

@@ -1,0 +1,13 @@
+<title-bar></title-bar>
+<div *ngFor="let row of base" class="row">
+  <div *ngFor="let column of row"
+    (dragenter)="handleDragEnter($event)"
+    (mousedown)="handleMouseDown($event)"
+    (mouseup)="handleMouseUp($event)"
+    (mouseover)="handleMouseOver($event)"
+   class="columns"
+   [class.sch-item]="column==' '"
+   style="border: 1px solid #F4F1E8;">
+    {{column}}<input type="hidden" value="100">
+  </div>
+</div>

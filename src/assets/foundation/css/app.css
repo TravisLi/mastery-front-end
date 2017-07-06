@@ -50,3 +50,11 @@
   background-color: #fefefe;
   color: #1779ba;
 }
+
+.sch-item{
+
+}
+
+.sch-item-selected{
+  background-color: #ff0000;
+}

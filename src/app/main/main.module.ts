@@ -19,6 +19,7 @@ import { RedeemListComponent } from './tropy/redeem-list/redeem-list.component';
 import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
 import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 //routing module
 import { MainRoutingModule } from './main-routing.module';
@@ -45,7 +46,8 @@ import { RedeemService } from '../redeem/redeem.service';
     RedeemListComponent,
     RewardComponent,
     RedeemComponent,
-    RedeemConfirmComponent
+    RedeemConfirmComponent,
+    ScheduleComponent
   ],
   providers:[ PrizeService, RedeemService ]
 })

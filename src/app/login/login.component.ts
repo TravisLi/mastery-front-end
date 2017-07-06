@@ -40,7 +40,7 @@ export class LoginComponent {
       (value) => {
         this.waiting = false;
         if(value){
-          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
+          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/schedule';
           this.logger.debug(redirect);
           this.router.navigate([redirect]);
         }else{
