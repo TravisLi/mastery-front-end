@@ -10,8 +10,10 @@ export class ScheduleComponent implements OnInit {
 
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
+
   @ViewChild(ScheduleTableComponent)
   scheduleTable:ScheduleTableComponent;
+
   @Input()fromHr:number = 8;
   @Input()toHr:number = 23;
   @Input()minPerRow:number = 30;

@@ -15,4 +15,4 @@
     <input (change)="update()" type="number" [(ngModel)]="toHr" name="tHr">
   </label>
 </div>
-<schedule-table *ngIf="scheduleItemss" [fromHr]="fromHr" [toHr]="toHr" [minPerRow]="minPerRow"><schedule-table>
+<schedule-table [fromHr]="fromHr" [toHr]="toHr" [minPerRow]="minPerRow"><schedule-table>

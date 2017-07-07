@@ -46,6 +46,7 @@ export class ScheduleTableComponent implements OnInit {
   }
 
   drawTable():void{
+    this.scheduleItemss = [];
     let rowPerHr = 60 / this.minPerRow;
     let rowReq:number = ((this.toHr-1)-this.fromHr)*rowPerHr;
     //console.log(rowReq);
@@ -81,7 +82,7 @@ export class ScheduleTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.drawTable();
   }
 
   toggleItem(e:Element,item:ScheduleItem){
