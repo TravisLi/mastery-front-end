@@ -1,13 +1,18 @@
 <title-bar></title-bar>
-<div *ngFor="let row of base" class="row">
-  <div *ngFor="let column of row"
-    (dragenter)="handleDragEnter($event)"
-    (mousedown)="handleMouseDown($event)"
-    (mouseup)="handleMouseUp($event)"
-    (mouseover)="handleMouseOver($event)"
-   class="columns"
-   [class.sch-item]="column==' '"
-   style="border: 1px solid #F4F1E8;">
-    {{column}}<input type="hidden" value="100">
-  </div>
+<div class="row">
+  <fieldset class="large-6 columns">
+    <legend>Time</legend>
+    <input (change)="update()" type="radio" name="time" #min60 [(ngModel)]="minPerRow" [value]="60" [checked]="minPerRow==min60.value"><label for="hr">1 hr</label>
+    <input (change)="update()" type="radio" name="time" #min30 [(ngModel)]="minPerRow" [value]="30" [checked]="minPerRow==min30.value"><label for="30min">30 mins</label>
+    <input (change)="update()" type="radio" name="time" #min15 [(ngModel)]="minPerRow" [value]="15" [checked]="minPerRow==min15.value"><label for="15min">15 mins</label>
+  </fieldset>
 </div>
+<div class="row">
+  <label>f
+    <input (change)="update()" type="number" [(ngModel)]="fromHr" name="fHr">
+  </label>
+  <label>t
+    <input (change)="update()" type="number" [(ngModel)]="toHr" name="tHr">
+  </label>
+</div>
+<schedule-table *ngIf="scheduleItemss" [fromHr]="fromHr" [toHr]="toHr" [minPerRow]="minPerRow"><schedule-table>

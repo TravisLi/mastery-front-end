@@ -20,6 +20,7 @@ import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
 import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleTableComponent } from './schedule/schedule-table/schedule-table.component';
 
 //routing module
 import { MainRoutingModule } from './main-routing.module';
@@ -47,7 +48,8 @@ import { RedeemService } from '../redeem/redeem.service';
     RewardComponent,
     RedeemComponent,
     RedeemConfirmComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    ScheduleTableComponent
   ],
   providers:[ PrizeService, RedeemService ]
 })
