@@ -9,7 +9,7 @@ export enum WeekDay{
   Sat
 }
 
-export class ScheduleItem{
+export class TimeslotItem{
 
   weekDay: WeekDay;
   hour: number;

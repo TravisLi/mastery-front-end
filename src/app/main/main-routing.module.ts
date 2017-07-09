@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //module
 import { AdminModule } from './admin/admin.module';
+import { TimeslotModule } from './timeslot/timeslot.module';
 
 //component
 import { MainComponent } from './main.component';
@@ -10,7 +11,7 @@ import { DictationComponent } from './dictation/dictation.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TropyComponent } from './tropy/tropy.component';
-import { ScheduleComponent } from './schedule/schedule.component';
+import { TimeslotComponent } from './timeslot/timeslot.component';
 
 import { RedeemComponent} from './redeem/redeem.component';
 import { RedeemConfirmComponent} from './redeem/redeem-confirm/redeem-confirm.component';
@@ -35,9 +36,13 @@ const mainRoutes: Routes = [
             path: 'admin',
             loadChildren: './admin/admin.module#AdminModule'
           },
+          {
+            path: 'timeslot',
+            loadChildren: './timeslot/timeslot.module#TimeslotModule'
+          },
           { path: 'dictation', component: DictationComponent, canDeactivate:[CanDeactivateGuard]},
           { path: 'news', component: NewsComponent },
-          { path: 'schedule', component: ScheduleComponent },
+          { path: 'timeslot', component: TimeslotComponent },
           { path: 'tropy', component: TropyComponent },
           { path: 'timetable', component: TimetableComponent },
           { path: 'redeem', component: RedeemComponent },

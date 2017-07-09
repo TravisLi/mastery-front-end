@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 //module
 import { TitleBarModule } from './title-bar/title-bar.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
+import { TimeslotModule } from './timeslot/timeslot.module';
 
 //component
 import { DictationComponent} from './dictation/dictation.component';
@@ -19,8 +20,7 @@ import { RedeemListComponent } from './tropy/redeem-list/redeem-list.component';
 import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
 import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.component';
-import { ScheduleComponent } from './schedule/schedule.component';
-import { ScheduleTableComponent } from './schedule/schedule-table/schedule-table.component';
+
 
 //routing module
 import { MainRoutingModule } from './main-routing.module';
@@ -33,7 +33,8 @@ import { RedeemService } from '../redeem/redeem.service';
     FormsModule,
     MainRoutingModule,
     TitleBarModule,
-    FileUploadModule
+    FileUploadModule,
+    TimeslotModule
   ],
   declarations: [
     MainComponent,
@@ -47,9 +48,7 @@ import { RedeemService } from '../redeem/redeem.service';
     RedeemListComponent,
     RewardComponent,
     RedeemComponent,
-    RedeemConfirmComponent,
-    ScheduleComponent,
-    ScheduleTableComponent
+    RedeemConfirmComponent
   ],
   providers:[ PrizeService, RedeemService ]
 })

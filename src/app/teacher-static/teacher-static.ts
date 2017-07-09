@@ -1,4 +1,4 @@
-import { Timeslot } from '../timeslot/timeslot';
+import { Timeslot } from '../main/timeslot/timeslot';
 import { Subject } from '../subject/subject';
 
 export class TeacherStatic{

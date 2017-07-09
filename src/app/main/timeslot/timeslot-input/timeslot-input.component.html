@@ -1,0 +1,53 @@
+<title-bar></title-bar>
+<div class="row">
+  <div class="small-12 medium-6 large-6 columns">
+    <div class="row">
+      <div class="small-6 medium-6 large-6 columns">
+        <label>套用月份由
+          <input type="number" [(ngModel)]="fromMonth" name="fMonth">
+        </label>
+      </div>
+      <div class="small-6 medium-6 large-6 columns">
+        <label>至
+          <input type="number" [(ngModel)]="toMonth" name="fMonth">
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="small-12 medium-6 large-6 columns">
+    <div class="row">
+      <div class="small-6 medium-6 large-6 columns">
+        <label >辦工時間由
+          <input (change)="drawTable()" type="number" [(ngModel)]="fromHr" name="fHr">
+        </label>
+      </div>
+      <div class="small-6 medium-6 large-6 columns">
+        <label>至
+          <input (change)="drawTable()" type="number" [(ngModel)]="toHr" name="tHr">
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row column">
+    <div class="small button-group">
+      <button (click)="updateMinPerRow(60)" type="button" class="button">1 小時</button>
+      <button (click)="updateMinPerRow(30)" type="button" class="button">30 分鐘</button>
+      <button (click)="updateMinPerRow(15)" type="button" class="button">15 分鐘</button>
+    </div>
+</div>
+<div *ngFor="let items of timeslotItemss" class="row">
+  <div *ngFor="let item of items"
+    (dragenter)="handleDragEnter($event,item)"
+    (mousedown)="handleMouseDown($event,item)"
+    (mouseup)="handleMouseUp($event,item)"
+    (mouseover)="handleMouseOver($event,item)"
+   class="columns"
+   [class.sch-item]="!item.displayText"
+   style="border: 1px solid #F4F1E8;">
+    {{item.displayText}}
+  </div>
+</div>
+<div class="row column">
+  <button (click)="save()" type="button" class="button expanded">儲存</button>
+</div>
