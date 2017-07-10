@@ -11,4 +11,5 @@
     <button class="button" [mdDatepickerToggle]="picker">Date</button>
   </div>
 </div>
-<md-datepicker #picker></md-datepicker>
+<md-datepicker #picker (selectedChanged)="dateChanged($event)"></md-datepicker>
+<timeslot-table></timeslot-table>

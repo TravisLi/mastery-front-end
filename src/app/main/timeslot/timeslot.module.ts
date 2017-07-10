@@ -7,6 +7,7 @@ import { TitleBarModule } from '../title-bar/title-bar.module'
 import { TimeslotRoutingModule } from './timeslot-routing.module';
 //routing module
 import { TimeslotComponent } from './timeslot.component';
+import { TimeslotTableComponent } from './timeslot-table/timeslot-table.component';
 import { TimeslotInputComponent } from './timeslot-input/timeslot-input.component';
 import { TimeslotEditComponent } from './timeslot-edit/timeslot-edit.component';
 import { TimeslotService } from './timeslot.service';
@@ -23,6 +24,7 @@ import { TimeslotService } from './timeslot.service';
   ],
   declarations: [
     TimeslotComponent,
+    TimeslotTableComponent,
     TimeslotInputComponent,
     TimeslotEditComponent,
   ],

@@ -3,7 +3,7 @@ import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { AuthService } from '../../auth/auth.service';
 import { NewsService } from './news.service';
 import { News } from './news';
-import * as $ from 'jquery';
+import * as jQuery from 'jquery'
 import 'foundation-sites';
 
 @Component({
@@ -37,11 +37,7 @@ export class NewsComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    $('#orbit').foundation();
+    jQuery('#orbit').foundation();
   }
 
-  ngAfterViewChecked(){
-    //jQuery('#orbit').foundation();
-
-  }
 }

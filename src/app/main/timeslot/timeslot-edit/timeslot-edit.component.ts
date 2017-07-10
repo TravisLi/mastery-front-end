@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TimeslotItem, WeekDay } from '../timeslot-item';
+import { TimeslotItem, TimeslotTableMode, WeekDay } from '../timeslot-item';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
+import { TimeslotTableComponent } from '../timeslot-table/timeslot-table.component';
 import { MdDatepicker, MdInputContainer } from '@angular/material';
 
 @Component({
@@ -9,17 +10,29 @@ import { MdDatepicker, MdInputContainer } from '@angular/material';
 })
 export class TimeslotEditComponent implements OnInit {
 
-  private static readonly TS_ITEM:string = "ts-item";
-  private static readonly TS_ITEM_SEL:string = "ts-item-selected";
-
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
+
+  @ViewChild(TimeslotTableComponent)
+  timeslotTable:TimeslotTableComponent
+
+  selectedDate:Date;
 
   constructor(){
   };
 
   ngOnInit(): void {
     this.titleBar.title = "當值時間";
+  }
+
+  dateChanged(e):void{
+    this.selectedDate = e;
+    this.timeslotTable.tableMode = TimeslotTableMode.Day;
+    this.timeslotTable.displayDay = this.selectedDate;
+    this.timeslotTable.fromHr = 8;
+    this.timeslotTable.toHr=23;
+    this.timeslotTable.minPerRow=30;
+    this.timeslotTable.drawTable();
   }
 
 }

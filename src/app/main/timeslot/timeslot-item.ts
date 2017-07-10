@@ -9,6 +9,11 @@ export enum WeekDay{
   Sat
 }
 
+export enum TimeslotTableMode{
+  Week,
+  Day
+}
+
 export class TimeslotItem{
 
   weekDay: WeekDay;
