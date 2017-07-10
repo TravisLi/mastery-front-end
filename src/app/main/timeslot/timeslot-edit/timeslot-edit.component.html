@@ -1,6 +1,14 @@
 <title-bar></title-bar>
-<md-input-container>
+<!-- <md-input-container>
   <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
   <button mdSuffix [mdDatepickerToggle]="picker"></button>
-</md-input-container>
+</md-input-container> -->
+<div class="row">
+  <div class="columns">
+    <input type="text" [mdDatepicker]="picker" placeholder="Choose a date">
+  </div>
+  <div class="columns">
+    <button class="button" [mdDatepickerToggle]="picker">Date</button>
+  </div>
+</div>
 <md-datepicker #picker></md-datepicker>

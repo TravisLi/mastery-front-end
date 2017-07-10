@@ -9,7 +9,7 @@ import { AuthGuard } from '../../auth/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'timeslot',
+    path: '',
     component: TimeslotComponent,
     canActivate: [AuthGuard],
     children: [

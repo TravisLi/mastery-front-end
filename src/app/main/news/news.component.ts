@@ -2,7 +2,9 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { AuthService } from '../../auth/auth.service';
 import { NewsService } from './news.service';
-import { News } from './news'
+import { News } from './news';
+import * as $ from 'jquery';
+import 'foundation-sites';
 
 @Component({
   selector: 'news',
@@ -14,7 +16,7 @@ export class NewsComponent implements OnInit {
 
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
-  newses: News[] = News[0];
+  newses: News[] = [];
   dataLoaded:boolean = false;
 
   constructor(private authService:AuthService, private newsService: NewsService){
@@ -35,7 +37,7 @@ export class NewsComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    jQuery('#orbit').foundation();
+    $('#orbit').foundation();
   }
 
   ngAfterViewChecked(){

@@ -2,9 +2,8 @@ import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/cor
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { RoleType } from '../role/role';
-// import 'foundation-sites';
-// import 'jquery';
-// import 'what-input';
+import * as jQuery from 'jquery';
+import 'foundation-sites';
 
 @Component({
   selector: 'main',

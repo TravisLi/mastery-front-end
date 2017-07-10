@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 //module
 import { TitleBarModule } from './title-bar/title-bar.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
+import { AdminModule } from './admin/admin.module';
 import { TimeslotModule } from './timeslot/timeslot.module';
 
 //component
@@ -21,7 +22,6 @@ import { RewardComponent } from './reward/reward.component';
 import { RedeemComponent } from './redeem/redeem.component';
 import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.component';
 
-
 //routing module
 import { MainRoutingModule } from './main-routing.module';
 import { PrizeService } from '../prize/prize.service';
@@ -34,6 +34,7 @@ import { RedeemService } from '../redeem/redeem.service';
     MainRoutingModule,
     TitleBarModule,
     FileUploadModule,
+    AdminModule,
     TimeslotModule
   ],
   declarations: [
