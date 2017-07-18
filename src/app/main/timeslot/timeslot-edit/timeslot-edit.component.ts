@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TimeslotItem, TimeslotTableMode, WeekDay } from '../timeslot-item';
+import { TimeslotItem, TimeslotTableMode } from '../timeslot-item';
+import { WeekDay } from '../../../enum/enum';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 import { TimeslotTableComponent } from '../timeslot-table/timeslot-table.component';
 import { MdDatepicker, MdInputContainer } from '@angular/material';
@@ -26,6 +27,7 @@ export class TimeslotEditComponent implements OnInit {
   }
 
   dateChanged(e):void{
+    console.log(e);
     this.selectedDate = e;
     this.timeslotTable.tableMode = TimeslotTableMode.Day;
     this.timeslotTable.displayDay = this.selectedDate;
@@ -33,6 +35,10 @@ export class TimeslotEditComponent implements OnInit {
     this.timeslotTable.toHr=23;
     this.timeslotTable.minPerRow=30;
     this.timeslotTable.drawTable();
+  }
+
+  save():void{
+
   }
 
 }

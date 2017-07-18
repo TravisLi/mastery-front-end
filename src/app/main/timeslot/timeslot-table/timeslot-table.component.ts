@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TimeslotItem, TimeslotTableMode, WeekDay } from '../timeslot-item';
+import { TimeslotItem, TimeslotTableMode} from '../timeslot-item';
+import { WeekDay } from '../../../enum/enum';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 import { Util } from '../../../util/util';
 
@@ -19,7 +20,7 @@ export class TimeslotTableComponent {
   @Input()tableMode:TimeslotTableMode;
   @Input()displayDay:Date;
   highlight:boolean = false;
-  weekDays:string[] = [];
+  weekDays:WeekDay[] = [];
 
   constructor(){
   };
@@ -66,25 +67,30 @@ export class TimeslotTableComponent {
     switch(this.tableMode){
 
       case TimeslotTableMode.Week:{
-        for(let wd in WeekDay){
-          this.weekDays.push(wd);
-        }
+        console.log("week mode")
+
+        this.weekDays = [];
+        this.weekDays.push(WeekDay.None);
+        this.weekDays.push(WeekDay.Sun);
+        this.weekDays.push(WeekDay.Mon);
+        this.weekDays.push(WeekDay.Tue);
+        this.weekDays.push(WeekDay.Wed);
+        this.weekDays.push(WeekDay.Thu);
+        this.weekDays.push(WeekDay.Fri);
+        this.weekDays.push(WeekDay.Sat);
+
         break;
       }
 
       case TimeslotTableMode.Day:{
 
+        this.weekDays = [];
         if(!this.displayDay){
           throw new Error("No displayDay");
         }
 
-        let weekDay:number = this.displayDay.getDay() + 1;
-        for(let wd in WeekDay){
-          if(weekDay.toString()==wd){
-            this.weekDays.push("0");
-            this.weekDays.push(wd);
-          }
-        }
+        this.weekDays.push(WeekDay.None);
+        this.weekDays.push(Util.getWeekDay(this.displayDay));
 
         firstItem = new TimeslotItem(WeekDay.None,0,0,Util.formatStdDate(this.displayDay));
         break;
@@ -93,33 +99,41 @@ export class TimeslotTableComponent {
 
     this.timeslotItemss = [];
     let rowPerHr = 60 / this.minPerRow;
-    console.log("rowPerHr=" + rowPerHr);
+    //console.log("rowPerHr=" + rowPerHr);
     let rowReq:number = (this.toHr-this.fromHr)*rowPerHr;
-    console.log("rowReq=" + rowReq);
+    //console.log("rowReq=" + rowReq);
     let runningHr:number = this.fromHr;
     for(let rowNo:number=-1;rowNo<=rowReq;rowNo++){
       let columns:TimeslotItem[] = [];
       //for(let columnNo:number=WeekDay.None;columnNo<=this.weekDays.length;columnNo++){
-      for(let day in this.weekDays){
-        //first row holding week day
+      for(let idx=0;idx<this.weekDays.length;idx++){
+        //first row holding week da
+        let day:WeekDay = this.weekDays[idx];
+        //console.log("day="+day);
+
+        let hrRow = rowNo % rowPerHr;
+        //console.log("hrRow="+hrRow);
+        let runningMin = hrRow * this.minPerRow;
+        //console.log("runningHr="+runningHr);
+
         if(rowNo==-1){
-          if(day==WeekDay[WeekDay.None]){
+          if(day==WeekDay.None){
             columns.push(firstItem);
           }else{
             columns.push(new TimeslotItem(WeekDay.None,0,0,WeekDay[day]));
           }
         }else{
           //first column
-          let hrRow = rowNo % rowPerHr;
-          let runningMin = hrRow * this.minPerRow;
-          if(day==WeekDay[WeekDay.None]){
-            columns.push(new TimeslotItem(WeekDay[day],0,0,`${runningHr}:${runningMin==0?runningMin.toString()+'0':runningMin}`));
-            if(hrRow == rowPerHr-1){
-                runningHr++;
-            }
+          if(day==WeekDay.None){
+            columns.push(new TimeslotItem(WeekDay.None,0,0,`${runningHr}:${runningMin==0?runningMin.toString()+'0':runningMin}`));
           }else{
             columns.push(new TimeslotItem(day,runningHr,runningMin));
           }
+        }
+
+        //increase hr if it is last column of the hour
+        if(idx==this.weekDays.length-1&&hrRow == rowPerHr-1){
+            runningHr++;
         }
       }
       //console.log(columns);
@@ -131,6 +145,7 @@ export class TimeslotTableComponent {
   save():void{
 
   }
+
 
   toggleItem(e:Element,item:TimeslotItem){
     if(this.highlight){

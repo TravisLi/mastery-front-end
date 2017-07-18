@@ -1,4 +1,5 @@
 import { environment } from '../../environments/environment';
+import { WeekDay } from '../enum/enum';
 
 export class Util{
 
@@ -32,6 +33,36 @@ export class Util{
 
   public static formatStdDate(date:Date):string{
     return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  }
+
+  public static getWeekDay(date:Date):WeekDay{
+    let weekDay:number = date.getDay() + 1;
+    switch(weekDay){
+        case WeekDay.Sun:{
+          return WeekDay.Sun;
+        }
+        case WeekDay.Mon:{
+          return WeekDay.Mon;
+        }
+        case WeekDay.Tue:{
+          return WeekDay.Tue;
+        }
+        case WeekDay.Wed:{
+          return WeekDay.Wed;
+        }
+        case WeekDay.Thu:{
+          return WeekDay.Thu;
+        }
+        case WeekDay.Fri:{
+          return WeekDay.Fri;
+        }
+        case WeekDay.Sat:{
+          return WeekDay.Sat;
+        }
+        default:{
+          return WeekDay.None;
+        }
+    }
   }
 
 }

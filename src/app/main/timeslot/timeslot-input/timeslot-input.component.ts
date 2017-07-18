@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TimeslotItem, TimeslotTableMode, WeekDay } from '../timeslot-item';
+import { TimeslotItem, TimeslotTableMode} from '../timeslot-item';
+import { WeekDay } from '../../../enum/enum';
 import { TimeslotTableComponent } from '../timeslot-table/timeslot-table.component';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 
