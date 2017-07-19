@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  columnPerRow: 5
+  columnPerRow: 5,
+  masteryRestUrl: "http://localhost:8080/mastery/api"
 };

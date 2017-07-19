@@ -1,17 +1,17 @@
 <div class="card">
   <div class="card-section">
-    <h6>{{lesson.name}}</h6>
+    <h6>{{lesson.name}}{{frLvl}}{{toLvl}}</h6>
     <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
       <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
-      {{lesson.period}}
+      {{lesson.startDateTime}} - {{lesson.endDateTime}}
     </div>
     <div class="column row" style="background-color:#00ff00; color:white; padding-left:5px">
       <i class="fi-home" style="font-size:22px;vertical-align:middle;"></i>
-      {{lesson.room}}
+      {{lesson.room.anme}}
     </div>
     <div class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
       <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
-      {{lesson.teacher}}
+      {{lesson.teacher.name}}
     </div>
   </div>
 </div>

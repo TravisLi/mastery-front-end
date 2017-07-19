@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule,JsonpModule } from '@angular/http';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './in-memory-data.service';
 
 //module
 import { MainModule } from './main/main.module';
@@ -34,8 +34,8 @@ import { CanDeactivateGuard } from './can-deactivate-guard.service';
     HttpModule,
     AppRoutingModule,
     MainModule,
-    MsgBoxModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    MsgBoxModule
+    //InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
     AppComponent,

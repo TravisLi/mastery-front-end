@@ -42,7 +42,6 @@ const mainRoutes: Routes = [
           },
           { path: 'dictation', component: DictationComponent, canDeactivate:[CanDeactivateGuard]},
           { path: 'news', component: NewsComponent },
-          { path: 'timeslot', component: TimeslotComponent },
           { path: 'tropy', component: TropyComponent },
           { path: 'timetable', component: TimetableComponent },
           { path: 'redeem', component: RedeemComponent },

@@ -1,4 +1,4 @@
-import { Lesson } from './lesson/lesson';
+import { Lesson } from '../../lesson/lesson';
 
 export class LessonOfDay{
   dayOfWeek: string;

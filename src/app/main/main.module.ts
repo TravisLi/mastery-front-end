@@ -26,6 +26,7 @@ import { RedeemConfirmComponent } from './redeem/redeem-confirm/redeem-confirm.c
 import { MainRoutingModule } from './main-routing.module';
 import { PrizeService } from '../prize/prize.service';
 import { RedeemService } from '../redeem/redeem.service';
+import { LessonService } from '../lesson/lesson.service';
 
 @NgModule({
   imports: [
@@ -51,6 +52,6 @@ import { RedeemService } from '../redeem/redeem.service';
     RedeemComponent,
     RedeemConfirmComponent
   ],
-  providers:[ PrizeService, RedeemService ]
+  providers:[ PrizeService, RedeemService, LessonService ]
 })
 export class MainModule {}

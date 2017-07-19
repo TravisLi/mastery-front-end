@@ -38,9 +38,10 @@ export class LoginComponent {
     this.authService.login(this.username, this.password)
     .then(
       (value) => {
+        console.log(value);
         this.waiting = false;
         if(value){
-          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/news';
+          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main/timetable';
           this.logger.debug(redirect);
           this.router.navigate([redirect]);
         }else{

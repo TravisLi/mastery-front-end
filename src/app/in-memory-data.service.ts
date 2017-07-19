@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
     let rewards = [];
 
     let users = [
-      {id:1, username: 'a', name:'a管理員', pwd: 'a', role:roles[0], stid:'1'},
+      {id:1, username: 'a', name:'P6', pwd: 'a', role:roles[0], stid:'1'},
       {id:2, username: 't1', name:'t老師1', pwd: 't1', role: roles[1], stid:'2'},
       {id:3, username: 't2', name:'t老師2', pwd: 't2', role: roles[1], stid:'3'},
       {id:4, username: 's1', name:'s學生1', pwd: 's1', role: roles[2], stid:'4', rewards:rewards},

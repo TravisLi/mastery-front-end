@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user/user';
-import { RoleType } from '../role/role';
+import { Role,RoleType } from '../role/role';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 
@@ -21,16 +21,25 @@ export class AuthService {
   }
 
   login(username:string,pwd:string): Promise<Boolean> {
-    return this.userService.getUserByUsername(username)
-    .then(user => {
-      if(user.pwd===pwd){
-        this.user = user;
-        this.isLoggedIn = true;
-        return true;
-      }else{
-        return false;
-      }
-    })
+    let role = new Role();
+    role.type = "student";
+
+    this.user=new User();
+    this.user.name = 'P6鄭思哲';
+    this.user.role = role;
+    this.isLoggedIn = true;
+    return Promise.resolve(true);
+
+    // return this.userService.getUserByUsername(username)
+    // .then(user => {
+    //   if(user.pwd===pwd){
+    //     this.user = user;
+    //     this.isLoggedIn = true;
+    //     return true;
+    //   }else{
+    //     return false;
+    //   }
+    // })
   }
 
   hasStudentRight():boolean{
