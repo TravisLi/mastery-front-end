@@ -24,9 +24,8 @@ export class LessonService {
     return this.http.get(reqUrl)
     .toPromise()
     .then(response => {
-      console.log(response);
-      response.json().data as Lesson[];
-
+      console.log(response.json());
+      return response.json() as Lesson[];
     })
     .catch(this.handleError);
   }

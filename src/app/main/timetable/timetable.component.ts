@@ -27,6 +27,8 @@ export class TimetableComponent implements OnInit {
   ngOnInit(): void {
     this.titleBar.title = "時間表";
     this.week = 1;
+    this.timetable.lessonOfDays = [];
+    console.log(this.timetable);
     this.lessonService.getWeeklyLsonByStd(this.authService.user.name,this.week)
     .then(lessons=>{
       this.lsonToLsonDay(lessons);
@@ -34,23 +36,29 @@ export class TimetableComponent implements OnInit {
   }
 
   private lsonToLsonDay(lsons:Lesson[]){
-    let map: Map<Date,LessonOfDay> = new Map();
+    console.log(lsons);
+    let map: Map<string,LessonOfDay> = new Map();
     for(var l of lsons){
-      var date:Date = new Date(l.startDateTime.getDate());
-      if(map.has(date)){
-        map.get(date).lessons.push(l);
+      var tempDate:Date = new Date(l.startDateTime);
+      var date:Date = new Date(tempDate.getFullYear(),tempDate.getMonth(), tempDate.getDate());
+      console.log(date.getTime());
+      if(map.has(date.getTime().toString())){
+        console.log("contains");
+        map.get(date.getTime().toString()).lessons.push(l);
       }else{
+        console.log("not contains");
         let lod = new LessonOfDay;
         lod.date = date.toString();
         lod.dayOfWeek = this.dayToDayStr(date.getDay());
         lod.lessons = new Array<Lesson>();
         lod.lessons.push(l);
+        map.set(date.getTime().toString(),lod);
       }
     }
 
-    map.forEach(function(v,k){
+    for(var v of Array.from(map.values())){
       this.timetable.lessonOfDays.push(v);
-    })
+    }
 
   }
 
