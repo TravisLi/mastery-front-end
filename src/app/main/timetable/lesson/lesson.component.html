@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-section">
     <h6>{{lesson.name}}</h6>
+    <button class="tiny button" (click)="getMkupLson()">Check</button>
     <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
       <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
       {{lesson.startDateTime | date:'shortTime' }} - {{lesson.endDateTime | date:'shortTime'}}
