@@ -1,7 +1,13 @@
 <div class="card">
   <div class="card-section">
-    <h6>{{lesson.name}}</h6>
-    <button class="tiny button" (click)="getMkupLson()">Check</button>
+    <div class="row">
+      <div class="small-8 medium-9 large-9 column">
+        <h6>{{lesson.name}}</h6>
+      </div>
+      <div class="small-4 medium-3 large-3 column" align="right">
+        <button class="tiny button" (click)="chkMkupLson()">轉堂</button>
+      </div>
+    </div>
     <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
       <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
       {{lesson.startDateTime | date:'shortTime' }} - {{lesson.endDateTime | date:'shortTime'}}
@@ -13,6 +19,9 @@
     <div *ngIf="lesson.teacher" class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
       <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
       {{lesson.teacher.name}}
+    </div>
+    <div class="column row" align="right">
+
     </div>
   </div>
 </div>

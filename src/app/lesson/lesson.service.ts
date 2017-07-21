@@ -18,8 +18,8 @@ export class LessonService {
     return Promise.reject(error.message || error);
   }
 
-  getWeeklyLsonByStd(name:string,week:number): Promise<Lesson[]> {
-    let parm:string = `/${name}/${week}/`
+  getWeeklyLsonByStd(name:string,weekNo:number): Promise<Lesson[]> {
+    let parm:string = `/${name}/${weekNo}/`
     let reqUrl:string = this.lessonUrl + parm;
     console.log("reqUrl=" + reqUrl);
     return this.http.get(reqUrl)

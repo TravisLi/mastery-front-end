@@ -4,20 +4,22 @@ import { AuthService } from '../../../auth/auth.service';
 import { LessonService} from '../../../lesson/lesson.service';
 
 @Component({
-  selector: 'lesson',
-  templateUrl: './lesson.component.html',
+  selector: 'makeup-lesson',
+  templateUrl: './makeup-lesson.component.html',
 })
-export class LessonComponent {
+export class MakeupLessonComponent {
 
-  @Input() lesson:Lesson;
-  @Output() chkEvt = new EventEmitter<Lesson>();
+  lessons:Lesson[];
 
   constructor(public authService: AuthService, public lessonService: LessonService) {
   }
 
-  public chkMkupLson():void{
-    console.log("chkmkupLesson");
-    this.chkEvt.emit(this.lesson);
+  public chkMkupLson(l:Lesson){
+    //jQuery('#makupLessonReveal').foundation('open');
+    this.lessonService.getMkupLson(l).then(lessons=>{
+       console.log(lessons);
+       this.lessons = lessons;
+    });
   }
 
 }

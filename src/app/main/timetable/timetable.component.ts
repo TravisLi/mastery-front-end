@@ -4,9 +4,10 @@ import { Lesson } from '../../lesson/lesson';
 import { LessonOfDay } from './lesson-of-day';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { MakeupLessonComponent } from './makeup-lesson/makeup-lesson.component';
 import { AuthService } from '../../auth/auth.service';
 import { LessonService } from '../../lesson/lesson.service';
-
+import * as jQuery from 'jquery';
 
 @Component({
   selector: 'timetable',
@@ -17,8 +18,12 @@ export class TimetableComponent implements OnInit {
 
   @ViewChild(TitleBarComponent)
   titleBar:TitleBarComponent;
+
+  @ViewChild(MakeupLessonComponent)
+  makeupLesson:MakeupLessonComponent;
+
   timetable: Timetable;
-  week:number
+  weekNo:number
 
   constructor(private authService:AuthService, private lessonService: LessonService){
     this.timetable = new Timetable();
@@ -26,13 +31,21 @@ export class TimetableComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleBar.title = "時間表";
-    this.week = 1;
+    this.weekNo = 1;
     this.timetable.lessonOfDays = [];
     //console.log(this.timetable);
-    this.lessonService.getWeeklyLsonByStd(this.authService.user.name,this.week)
+    this.lessonService.getWeeklyLsonByStd(this.authService.user.name,this.weekNo)
     .then(lessons=>{
       this.lsonToLsonDay(lessons);
+    }).catch(()=>{
+      this.titleBar.msgBox.sendAlterMsg("Oops!");
     });
+  }
+
+  public chkMkupLson(l:Lesson):void{
+    console.log("event capture");
+    jQuery('#makeupLessonReveal').foundation('open');
+    this.makeupLesson.chkMkupLson(l);
   }
 
   private lsonToLsonDay(lsons:Lesson[]){
@@ -63,6 +76,12 @@ export class TimetableComponent implements OnInit {
       this.timetable.lessonOfDays.push(v);
     }
 
+  }
+
+  ngAfterViewInit(){
+    jQuery('#makeupLessonReveal').foundation();
+    // jQuery('#rewardReveal').foundation();
+    // jQuery('#redeemReveal').foundation();
   }
 
   private dayToDayStr(day:number):string{

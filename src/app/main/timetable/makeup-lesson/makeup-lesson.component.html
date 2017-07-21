@@ -1,0 +1,31 @@
+<div class="reveal" id="makeupLessonReveal" data-reveal>
+  <div *ngFor="let lesson of lessons">
+    <div class="card">
+      <div class="card-section">
+        <div class="row">
+          <div class="small-8 medium-9 large-9 column">
+            <h6>{{lesson.name}}</h6>
+          </div>
+          <div class="small-4 medium-3 large-3 column" align="right">
+            <button class="tiny button">選擇</button>
+          </div>
+        </div>
+        <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">
+          <i class="fi-clock" style="font-size:22px;vertical-align:middle;"></i>
+          {{lesson.startDateTime | date:'fullDate' }} {{lesson.startDateTime | date:'shortTime' }}- {{lesson.endDateTime | date:'shortTime'}}
+        </div>
+        <div *ngIf="lesson.room"class="column row" style="background-color:#00ff00; color:white; padding-left:5px">
+          <i class="fi-home" style="font-size:22px;vertical-align:middle;"></i>
+          {{lesson.room.name}}
+        </div>
+        <div *ngIf="lesson.teacher" class="column row" style="background-color:#ffcc00; color:white; padding-left:5px">
+          <i class="fi-torso-business" style="font-size:22px;vertical-align:middle;"></i>
+          {{lesson.teacher.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

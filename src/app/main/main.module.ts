@@ -12,6 +12,7 @@ import { TimeslotModule } from './timeslot/timeslot.module';
 import { DictationComponent} from './dictation/dictation.component';
 import { WordListComponent } from './dictation/word-list/word-list.component';
 import { LessonComponent } from './timetable/lesson/lesson.component';
+import { MakeupLessonComponent } from './timetable/makeup-lesson/makeup-lesson.component';
 import { MainComponent } from './main.component';
 import { NewsComponent } from './news/news.component';
 import { TimetableComponent } from './timetable/timetable.component';
@@ -44,6 +45,7 @@ import { LessonService } from '../lesson/lesson.service';
     DictationComponent,
     WordListComponent,
     LessonComponent,
+    MakeupLessonComponent,
     TimetableComponent,
     TropyComponent,
     RewardListComponent,

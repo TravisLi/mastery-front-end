@@ -25,7 +25,7 @@ export class AuthService {
     role.type = "student";
 
     this.user=new User();
-    this.user.name = 'P6鄭思哲';
+    this.user.name = username;
     this.user.role = role;
     this.isLoggedIn = true;
     return Promise.resolve(true);
