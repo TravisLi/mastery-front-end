@@ -15,8 +15,9 @@ export class MakeupLessonComponent {
   }
 
   public chkMkupLson(l:Lesson){
-    //jQuery('#makupLessonReveal').foundation('open');
-    this.lessonService.getMkupLson(l).then(lessons=>{
+    this.lessons=[];
+
+    this.lessonService.getMkupLson(l,this.authService.user.name).then(lessons=>{
        console.log(lessons);
        this.lessons = lessons;
     });

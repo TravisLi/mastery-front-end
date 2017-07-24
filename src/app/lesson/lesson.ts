@@ -1,5 +1,6 @@
 import { Room } from '../room/room';
 import { Teacher } from '../teacher/teacher';
+import { Student } from '../student/student'
 
 export class Lesson{
   id: number;
@@ -10,4 +11,5 @@ export class Lesson{
   endDateTime: Date;
   room: Room;
   teacher: Teacher;
+  students: Student[];
 }
