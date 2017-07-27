@@ -9,7 +9,9 @@ export class LessonService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private lessonUrl = environment.masteryRestUrl + '/lesson/student';
-  private mkupLsonUrl = environment.masteryRestUrl + '/mkuplson/find';
+  private mkupUrl = environment.masteryRestUrl + '/mkup';
+  private mkupFindUrl = this.mkupUrl + '/find'
+  private mkupAplyUrl = this.mkupUrl + '/apply'
 
   constructor(private http:Http){}
 
@@ -31,8 +33,8 @@ export class LessonService {
     .catch(this.handleError);
   }
 
-  getMkupLson(l:Lesson, stdName:string): Promise<Lesson[]>{
-    let reqUrl:string = this.mkupLsonUrl + `/${stdName}/`
+  getMkup(l:Lesson, stdName:string): Promise<Lesson[]>{
+    let reqUrl:string = this.mkupFindUrl + `/${stdName}/`
     return this.http.post(reqUrl,l).toPromise().then(
       response => {
         return response.json() as Lesson[]

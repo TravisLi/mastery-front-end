@@ -14,13 +14,4 @@ export class MakeupLessonComponent {
   constructor(public authService: AuthService, public lessonService: LessonService) {
   }
 
-  public chkMkupLson(l:Lesson){
-    this.lessons=[];
-
-    this.lessonService.getMkupLson(l,this.authService.user.name).then(lessons=>{
-       console.log(lessons);
-       this.lessons = lessons;
-    });
-  }
-
 }

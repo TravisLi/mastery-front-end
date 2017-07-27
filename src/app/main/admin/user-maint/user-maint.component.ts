@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Logger } from '../../../logger/logger';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 import { User } from '../../../user/user';
-import { Role } from '../../../role/role';
 import { UserService } from '../../../user/user.service';
 import { Util } from '../../../util/util';
 import { environment } from '../../../../environments/environment';
@@ -33,9 +32,6 @@ export class UserMaintComponent {
       console.log(this.userss);
       this.titleBar.msgBox.clearMsg();
     });
-    let role = new Role();
-    role.type = '';
-    this.selectedUser.role = role;
   }
 
   onClick(user:User){

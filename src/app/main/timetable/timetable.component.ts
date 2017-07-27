@@ -44,8 +44,17 @@ export class TimetableComponent implements OnInit {
 
   public chkMkupLson(l:Lesson):void{
     console.log("event capture");
-    jQuery('#makeupLessonReveal').foundation('open');
-    this.makeupLesson.chkMkupLson(l);
+    this.titleBar.msgBox.sendLoadingMsg();
+    this.lessonService.getMkup(l,this.authService.user.name).then(lessons=>{
+      console.log(lessons);
+      if(lessons.length>0){
+        this.titleBar.msgBox.clearMsg();
+        jQuery('#makeupLessonReveal').foundation('open');
+        this.makeupLesson.lessons = lessons;
+      }else{
+        this.titleBar.msgBox.sendWarningMsg("無堂可轉");
+      }
+    });
   }
 
   private lsonToLsonDay(lsons:Lesson[]){

@@ -50,7 +50,7 @@ export class UserService {
   private static filterStudent(response:any):User[]{
     let users = response.json().data as User[];
     let students = users.filter((user)=>{
-      return user.role.type=='student'
+      return user.role=='student'
     })
     console.log(students);
     return students;

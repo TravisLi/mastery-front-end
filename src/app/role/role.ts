@@ -3,8 +3,3 @@ export enum RoleType{
   teacher,
   student
 }
-
-export class Role{
-  id: number;
-  type: string;
-}

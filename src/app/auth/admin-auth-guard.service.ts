@@ -26,7 +26,7 @@ export class AdminAuthGuard extends AuthGuard {
   checkIsAdmin(url: string): boolean {
 
     if(super.checkLogin(url)){
-      if(this.authService.user.role.type == 'admin'){
+      if(this.authService.user.role == 'admin'){
         return true;
       }
     }
