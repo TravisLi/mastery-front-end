@@ -43,7 +43,7 @@ export class TimetableComponent implements OnInit {
   }
 
   public chkMkupLson(l:Lesson):void{
-    console.log("event capture");
+    console.log("chkMkup event capture");
     this.titleBar.msgBox.sendLoadingMsg();
     this.lessonService.getMkup(l,this.authService.user.name).then(lessons=>{
       console.log(lessons);
@@ -53,6 +53,19 @@ export class TimetableComponent implements OnInit {
         this.makeupLesson.lessons = lessons;
       }else{
         this.titleBar.msgBox.sendWarningMsg("無堂可轉");
+      }
+    });
+  }
+
+  public aplyMkup(l:Lesson):void{
+    console.log("aplyMkup event capture");
+    this.titleBar.msgBox.sendLoadingMsg();
+    this.lessonService.aplyMkup(l,this.authService.user.id).then(result=>{
+      console.log("apply result=" + result);
+      if(result){
+        this.titleBar.msgBox.sendWarningMsg("轉堂成功");
+      }else{
+        this.titleBar.msgBox.sendWarningMsg("轉堂失敗");
       }
     });
   }

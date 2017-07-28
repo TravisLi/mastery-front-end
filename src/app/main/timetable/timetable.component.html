@@ -1,5 +1,5 @@
 <title-bar></title-bar>
-<makeup-lesson></makeup-lesson>
+<makeup-lesson (aplyEvt)="aplyMkup($event)"></makeup-lesson>
 <div *ngFor="let lessonOfDay of timetable.lessonOfDays" class="column row">
   <div class="column row">
     <h5>{{lessonOfDay.date | date }} - {{lessonOfDay.dayOfWeek}}</h5>

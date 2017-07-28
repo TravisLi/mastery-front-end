@@ -5,7 +5,7 @@
         <h6>{{lesson.name}}</h6>
       </div>
       <div class="small-4 medium-4 large-4 column" align="right">
-        <button class="tiny button" (click)="chkMkupLson()">轉堂</button>
+        <button *ngIf="!isMkup()" class="tiny button" (click)="chkMkupLson()">轉堂</button>
       </div>
     </div>
     <div class="column row" style="background-color:#00ccff; color:white; padding-left:5px">

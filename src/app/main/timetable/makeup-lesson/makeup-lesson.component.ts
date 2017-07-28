@@ -10,8 +10,14 @@ import { LessonService} from '../../../lesson/lesson.service';
 export class MakeupLessonComponent {
 
   lessons:Lesson[];
+  @Output() aplyEvt = new EventEmitter<Lesson>();
 
-  constructor(public authService: AuthService, public lessonService: LessonService) {
+  constructor() {
+  }
+
+  public aplyMkup(l:Lesson):void{
+    console.log("aplyMkup");
+    this.aplyEvt.emit(l);
   }
 
 }

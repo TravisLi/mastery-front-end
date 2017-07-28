@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Lesson } from '../../../lesson/lesson';
 import { AuthService } from '../../../auth/auth.service';
-import { LessonService} from '../../../lesson/lesson.service';
+import { Lesson } from '../../../lesson/lesson';
+import { Student } from '../../../student/student';
 
 @Component({
   selector: 'lesson',
@@ -12,7 +12,15 @@ export class LessonComponent {
   @Input() lesson:Lesson;
   @Output() chkEvt = new EventEmitter<Lesson>();
 
-  constructor(public authService: AuthService, public lessonService: LessonService) {
+  constructor(private authService:AuthService) {
+  }
+
+  public isMkup():boolean{
+    for(let s of this.lesson.students){
+      if(s.id == this.authService.user.id){
+        return s.isMkup;
+      }
+    }
   }
 
   public chkMkupLson():void{

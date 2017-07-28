@@ -42,4 +42,14 @@ export class LessonService {
     ).catch(this.handleError);
   }
 
+  aplyMkup(l:Lesson, stdId:string): Promise<boolean>{
+    let reqUrl:string = this.mkupAplyUrl + `/${stdId}/`
+    return this.http.post(reqUrl,l).toPromise().then(
+      response => {
+        return response.json() as boolean;
+      }
+    ).catch(this.handleError);
+  }
+
+
 }
