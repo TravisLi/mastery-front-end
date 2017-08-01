@@ -52,7 +52,7 @@ export class LoginComponent {
     .catch((reject)=>{
       this.waiting = false;
       this.logger.error(reject);
-      this.msgBox.sendAlterMsg('無此用戶');
+      this.msgBox.sendAlertMsg('無此用戶');
     }
 
     )

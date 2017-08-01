@@ -34,7 +34,7 @@ export class MsgBoxComponent {
     this.sysMsg = new SystemMessage(SysMsgType.Warning,msg);
   }
 
-  sendAlterMsg(msg:string):void{
+  sendAlertMsg(msg:string):void{
     this.sysMsg = new SystemMessage(SysMsgType.Alert,msg);
   }
 

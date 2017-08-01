@@ -12,6 +12,8 @@ export class LessonService {
   private mkupUrl = environment.masteryRestUrl + '/mkup';
   private mkupFindUrl = this.mkupUrl + '/find'
   private mkupAplyUrl = this.mkupUrl + '/apply'
+  private mkupNewUrl = this.mkupAplyUrl + '/new'
+  private mkupExtUrl = this.mkupAplyUrl + '/exist'
 
   constructor(private http:Http){}
 
@@ -42,9 +44,18 @@ export class LessonService {
     ).catch(this.handleError);
   }
 
-  aplyMkup(l:Lesson, stdId:string): Promise<boolean>{
-    let reqUrl:string = this.mkupAplyUrl + `/${stdId}/`
-    return this.http.post(reqUrl,l).toPromise().then(
+  aplyNewMkup(toLson:Lesson, stdId:string): Promise<boolean>{
+    let reqUrl:string = this.mkupNewUrl + `/${stdId}/`
+    return this.http.post(reqUrl,toLson).toPromise().then(
+      response => {
+        return response.json() as boolean;
+      }
+    ).catch(this.handleError);
+  }
+
+  aplyExtMkup(toLson:Lesson, stdLsonId:string): Promise<boolean>{
+    let reqUrl:string = this.mkupExtUrl + `/${stdLsonId}/`
+    return this.http.post(reqUrl,toLson).toPromise().then(
       response => {
         return response.json() as boolean;
       }

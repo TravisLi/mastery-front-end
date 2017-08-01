@@ -42,7 +42,7 @@ export class RedeemComponent {
       this.selectedPrize=prize;
     }else{
       let tropyOwe = 50 - prize.tropyRequired;
-      this.titleBar.msgBox.sendAlterMsg(`重差${tropyOwe}個獎杯`);
+      this.titleBar.msgBox.sendAlertMsg(`重差${tropyOwe}個獎杯`);
     }
   }
 

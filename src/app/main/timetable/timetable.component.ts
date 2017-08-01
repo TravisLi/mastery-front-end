@@ -22,6 +22,8 @@ export class TimetableComponent implements OnInit {
   @ViewChild(MakeupLessonComponent)
   makeupLesson:MakeupLessonComponent;
 
+  frLson:Lesson;
+
   timetable: Timetable;
   weekNo:number
 
@@ -33,17 +35,22 @@ export class TimetableComponent implements OnInit {
     this.titleBar.title = "時間表";
     this.weekNo = 1;
     this.timetable.lessonOfDays = [];
-    //console.log(this.timetable);
+    this.reloadLson();
+
+  }
+
+  public reloadLson():void{
     this.lessonService.getWeeklyLsonByStd(this.authService.user.name,this.weekNo)
     .then(lessons=>{
       this.lsonToLsonDay(lessons);
     }).catch(()=>{
-      this.titleBar.msgBox.sendAlterMsg("Oops!");
+      this.titleBar.msgBox.sendAlertMsg("Oops!");
     });
   }
 
   public chkMkupLson(l:Lesson):void{
     console.log("chkMkup event capture");
+    this.frLson = l;
     this.titleBar.msgBox.sendLoadingMsg();
     this.lessonService.getMkup(l,this.authService.user.name).then(lessons=>{
       console.log(lessons);
@@ -60,14 +67,41 @@ export class TimetableComponent implements OnInit {
   public aplyMkup(l:Lesson):void{
     console.log("aplyMkup event capture");
     this.titleBar.msgBox.sendLoadingMsg();
-    this.lessonService.aplyMkup(l,this.authService.user.id).then(result=>{
-      console.log("apply result=" + result);
-      if(result){
-        this.titleBar.msgBox.sendWarningMsg("轉堂成功");
-      }else{
-        this.titleBar.msgBox.sendWarningMsg("轉堂失敗");
+    if(l.id == null){
+      l.id = this.frLson.id;
+      this.lessonService.aplyNewMkup(l,this.authService.user.id).then(result=>{
+        console.log("apply new result=" + result);
+        this.procAplyMkupResult(result);
+      });
+    }else{
+
+      if(this.frLson){
+        let stdLsonId:string = "";
+        for(let s of this.frLson.students){
+          if(s.id == this.authService.user.id){
+            stdLsonId = s.stdLsonId;
+          }
+        }
+
+        if(stdLsonId){
+          this.lessonService.aplyExtMkup(l,stdLsonId).then(result=>{
+            console.log("apply exist result=" + result);
+            this.procAplyMkupResult(result);
+          });
+        }
       }
-    });
+
+    }
+  }
+
+  private procAplyMkupResult(result:boolean):void{
+    if(result){
+      this.titleBar.msgBox.sendSuccessMsg("轉堂成功");
+      this.reloadLson();
+    }else{
+      this.titleBar.msgBox.sendAlertMsg("轉堂失敗");
+    }
+    jQuery('#makeupLessonReveal').foundation('close');
   }
 
   private lsonToLsonDay(lsons:Lesson[]){
@@ -94,6 +128,7 @@ export class TimetableComponent implements OnInit {
       }
     }
 
+    this.timetable.lessonOfDays = [];
     for(var v of Array.from(map.values())){
       this.timetable.lessonOfDays.push(v);
     }
