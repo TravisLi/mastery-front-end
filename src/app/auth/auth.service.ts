@@ -15,6 +15,7 @@ export class AuthService {
   isLoggedIn: boolean = false;
   redirectUrl: string;
   private loginUrl = environment.masteryRestUrl + '/login';
+  private updPwdUrl = environment.masteryRestUrl + '/user/updatepwd/';
 
   constructor(private router: Router, private http:Http) {
 
@@ -37,17 +38,21 @@ export class AuthService {
         }
       }
     ).catch(this.handleError);
+  }
 
-    // return this.userService.getUserByUsername(username)
-    // .then(user => {
-    //   if(user.pwd===pwd){
-    //     this.user = user;
-    //     this.isLoggedIn = true;
-    //     return true;
-    //   }else{
-    //     return false;
-    //   }
-    // })
+  changePwd(oldPwd:string,newPwd:string){
+    console.log("changePwd");
+    let parm:string = `/${this.user.id}/${oldPwd}/${newPwd}/`
+    let reqUrl:string = this.updPwdUrl + parm;
+    return this.http.get(reqUrl).toPromise().then(
+      response => {
+        if(response!=null){
+          var result:boolean = response.json() as boolean;
+          console.log(result);
+          return result;
+        }
+      }
+    ).catch(this.handleError);
   }
 
   hasStudentRight():boolean{
