@@ -19,6 +19,10 @@ export class TitleBarComponent {
 
   }
 
+  updPwd(){
+    this.authService.changePwd("1234","1234");
+  }
+
   logout(){
     this.authService.logout();
   }

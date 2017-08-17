@@ -69,7 +69,7 @@ export class TimetableComponent implements OnInit {
     this.titleBar.msgBox.sendLoadingMsg();
     if(l.id == null){
       l.id = this.frLson.id;
-      this.lessonService.aplyNewMkup(l,this.authService.user.id).then(result=>{
+      this.lessonService.aplyNewMkup(this.authService.user.id,this.frLson,l).then(result=>{
         console.log("apply new result=" + result);
         this.procAplyMkupResult(result);
       });
@@ -84,7 +84,7 @@ export class TimetableComponent implements OnInit {
         }
 
         if(stdLsonId){
-          this.lessonService.aplyExtMkup(l,stdLsonId).then(result=>{
+          this.lessonService.aplyExtMkup(this.authService.user.id,stdLsonId,this.frLson,l).then(result=>{
             console.log("apply exist result=" + result);
             this.procAplyMkupResult(result);
           });
